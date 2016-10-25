@@ -1,8 +1,9 @@
 # inf5750_groupproject
 Group project in open source development
 
+GitHub hjelp: 
 Klone ned:
-* git clone https://github.com/UiO-INF3331/INF3331-Sara.git
+* git clone https://github.com/hannarognerud/inf5750_groupproject
 
 Legge til på github:
 * git add Readme.txt
