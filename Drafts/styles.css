@@ -1,0 +1,99 @@
+.nav_menu{
+    font-size: 20px;
+    font-family: monospace;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*background-color: #333;*/
+    background-color: #B0E0E6;
+    width: 100%;
+    margin-top: -4px;
+    height: 70px;
+    box-shadow: 5px 5px 5px #111
+}
+.nav_menu li {
+    float: left;
+    text-align: center;
+    min-width: 8em;
+    margin-left: 6em;
+    margin-top: 10px;  
+}
+.nav_menu li a {
+    border-radius: 25px;
+    background-color: coral;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0.2em;
+    text-decoration: none;
+    box-shadow: 5px 5px 5px #111
+}
+/*highlights the elements in nav_menu*/
+.nav_menu li a:hover{
+    border-radius: 25px;
+    background-color: coral;
+    -webkit-transform: scale(2,2);
+    -ms-transform: scale(2,2);
+    transform: scale(2,2);
+}
+body { /*alle elementer befinner seg*/
+    margin:0;
+    background-color: "#ccc";
+    background-size: cover;
+}
+.container{
+   width: 90%;
+   margin: 0 auto;
+}
+#searchDiv{
+    margin-top: 30px;    
+}
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    box-shadow: 5px 5px 5px #111
+
+}
+input[type=text]:focus {
+    width: 100%;
+}
+#map{
+    border: 2px solid black;
+    border-radius: 25px;
+    margin-top: 30px;
+    float: right;
+    width: 60%;
+    height: 580px;
+    box-shadow: 5px 5px 5px #111
+}
+#rightDiv{
+    font-family: monospace;
+    border: 2px solid black;
+    border-radius: 25px;
+    margin-top: 30px;
+    float: left;
+    width: 35%;
+    height: 580px;
+    text-align: center;
+    background-color: #B0E0E6;
+    box-shadow: 5px 5px 5px #111
+}
+footer{
+    font-size: 18px;
+    text-align: center;
+    height: 25px;
+    float: left;
+    width: 100%;
+    font-family: fantasy;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
