@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<body style="background-color:#F8F8FF">
+<head>
+    <meta charset="UTF-8">
+    <title>Health facilities</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <header><!--hovedmenyen -->
+        <ul class="nav_menu">
+        <li><img src="220px-Coat_of_arms_of_Sierra_Leone.svg.png"></li>
+        <li><a href="index.html">Home</a></li><!--Href linker til en nettside-->
+        <li><a href="about.html">About</a></li>
+        <li><a href="ContactMe.html">Contact</a></li>
+        </ul>
+    </header>
+
+<section id="mainBody">
+
+    <div id="searchDiv">
+        <form>
+          <input type="text" name="search" placeholder="Search..">
+        </form>
+    </div>
+
+    <div id="map">
+        <script>
+            function myMap() {
+                var mapCanvas = document.getElementById("map");
+                var mapOptions = {
+                center: new google.maps.LatLng(8.4,-11.8),
+                zoom: 8
+                }
+                var map = new google.maps.Map(mapCanvas, mapOptions);
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+    </div>
+
+    <div id="rightDiv">
+        <h2>Health Facilities</h2>
+    </div>
+        
+</section>
+<footer>Class Clowns, Copyright 2016</footer>
+</div>
+</body>
+</html>
