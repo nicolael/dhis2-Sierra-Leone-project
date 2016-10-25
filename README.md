@@ -2,6 +2,7 @@
 Group project in open source development
 
 GitHub hjelp: 
+
 Klone ned:
 * git clone https://github.com/hannarognerud/inf5750_groupproject
 
