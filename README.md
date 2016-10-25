@@ -24,3 +24,6 @@ Comitte med beskjed:
 
 Pushe filen til github:
 * git push
+
+Hente oppdateringer
+* git pull
