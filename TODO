@@ -1,0 +1,23 @@
+TODO LIST:
+
+Search for an org. unit and get facility details, using live search
+    - 
+
+Filter your search based on levels
+ - Level 1 - 4
+ - Få opp 1 marker på level 1
+
+Present the information pertaining to the chosen facility in a drop-down menu beneath its name
+
+Locate on map
+ - Vise kart
+ - Sette markers og finne koordinater
+ 
+Edit coordinates
+    - Trykke på en marker og endre koordinater?
+
+Edit org. unit details
+    - 
+
+Add a new facility by clicking on the map
+    - Finne stedsnavn via koordinater eller sette random navn? 
