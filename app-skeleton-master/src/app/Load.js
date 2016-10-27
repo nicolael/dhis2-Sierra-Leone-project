@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { loadOrganisationUnits } from '../api';
 import List from './List';
 import Map from './Map';
+import SearchItem from './Search';
 
 /**
  * ES2015 class component
@@ -52,9 +53,7 @@ export default class Load extends Component {
             <div className="mapAndList">
                 
                 <div className="listDiv">
-                    {this.state.items.map((item, index) => (
-                    <ul key={index}>{item.displayName}</ul>
-                    ))}
+                    <SearchItem />
                 </div>
 
                 <div className ="mapDiv">

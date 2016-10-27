@@ -23,7 +23,8 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "jquery": "^2.2.3",
-    "react-google-maps": "^4.11.0"
+    "react-google-maps": "^4.11.0",
+    "react-search": "^2.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",

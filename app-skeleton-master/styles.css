@@ -27,7 +27,7 @@
 }
 .app-wrapper{ /*Wrapper alle componentene*/
     border: 2px solid black;
-    height: 700px;
+    height: 900px;
     width: 79%;
     float: right;
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import log from 'loglevel';
 import { loadOrganisationUnits } from '../api';
-import List from './List';
+//import List from './List';
 import Map from './Map';
 import Load from './Load'
+import SearchItem from './Search'
 
 import HeaderBarComponent from 'd2-ui/lib/app-header/HeaderBar';
 import headerBarStore$ from 'd2-ui/lib/app-header/headerBar.store';
@@ -61,6 +62,7 @@ export default React.createClass({
                 />
                 <div className="main-content">Geolocation of health facilities in Sierra Leone </div>
                 <Load/>
+
             </div>
         );
     },

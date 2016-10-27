@@ -25,5 +25,4 @@ export default function List({ items = [] }) {
 
 List.propTypes = {
     items: PropTypes.array,
-    onItemClick: PropTypes.func.isRequired,
 };
