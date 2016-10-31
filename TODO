@@ -1,19 +1,20 @@
 TODO LIST:
 
-Search for an org. unit and get facility details, using live search
+Search for an org. unit and get facility details, using live search (Nicholas og Sara)
     - Live search: få opp forslag til steder mens man typer? 
-
-Filter your search based on levels
- - Level 1 - 4
- - Få opp 1 marker på level 1
-
-Present the information pertaining to the chosen facility in a drop-down menu beneath its name
-
-Locate on map
+    - bruke Json til å få tak i mer info enn navn og id fra loadOrganisationUnits()
+        - Bruke jQuery 
+        - Javascript
+        
+Locate on map (Hanna)
  - Vise kart
  - Sette markers og finne koordinater
+
+Filter your search based on levels - why? 
+ - Level 1 - 4
+ - Få opp 1 marker på level 1
  
-Edit coordinates
+Edit coordinates - hvorfor endre koordinatene? 
     - Trykke på en marker og endre koordinater?
 
 Edit org. unit details
@@ -21,3 +22,5 @@ Edit org. unit details
 
 Add a new facility by clicking on the map
     - Finne stedsnavn via koordinater eller sette random navn? 
+
+Present the information pertaining to the chosen facility in a drop-down menu beneath its name
