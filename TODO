@@ -8,19 +8,41 @@ Search for an org. unit and get facility details, using live search (Nicholas og
         
 Locate on map (Hanna)
  - Vise kart
+    - Bruke Turf siden vi bruker kart (trenger ikke). Man vet hva som er innefor et polynom.
+        - Trykke på kartet
+        - Vise pathen
+        
+    - Sette borders: finne alle koordinatene og sette - i mellom
+
  - Sette markers og finne koordinater
 
-Filter your search based on levels - why? 
+Filter your search based on levels
  - Level 1 - 4
  - Få opp 1 marker på level 1
+ - Søke først også filtrere
  
 Edit coordinates - hvorfor endre koordinatene? 
     - Trykke på en marker og endre koordinater?
 
-Edit org. unit details
-    - 
+Edit org. unit details. 
+This can be extended by linking to a particular dataset called Infrastructural Indicators, which can be found under System Settings.
+    - Hvilke detaljer? 
+    - Lage infoen selv (system setting -> infrastructural dataelements ->
+    - Åpningstider/stengetider
+    - Har id, grupper, nivå, description, openingdate, kode (jSon eller XML)
 
 Add a new facility by clicking on the map
     - Finne stedsnavn via koordinater eller sette random navn? 
+    - Gi et par obligatoriske felt, se eksempel
+    - lage en limit innenfor Afrika? 
+        - Feks skrive ut tips til brukeren: hold deg innenfor x1 - x2 og y1 - y2
+    - Ikke kunne zoome lenger ut enn Afrika eller låse kartet
+        -   Gi brukeren en advarsel hvis det er dårlig lokasjon
 
 Present the information pertaining to the chosen facility in a drop-down menu beneath its name
+
+Hva er best å gjøre mtp Skeleton? 
+    - d2 bibliotek
+    
+Vurdering av prosjekt???
+    
