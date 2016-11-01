@@ -40,6 +40,17 @@ export default class Load extends Component {
             lat: 8.431759,
             lng: -11.743826
         }
+
+         // Marker to Map
+        const markers = [
+            {
+                location: {
+                    lat: 8.431759,
+                    lng: -11.743826
+                }
+            }
+        ]
+
         // If the component state is set to isLoading we hide the app and show a loading message
         if (this.state.isLoading) {
             return (
@@ -57,7 +68,7 @@ export default class Load extends Component {
                 </div>
 
                 <div className ="mapDiv">
-                <Map center={location} />
+                <Map center={location} markers={markers}/>
                 </div>
             </div>
         );

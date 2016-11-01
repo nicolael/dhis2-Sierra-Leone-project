@@ -47,10 +47,7 @@ export default React.createClass({
             { key: 'item2', label: 'Item 2' },
         ];
 
-        const location = {
-            lat: 8.431759,
-            lng: -11.743826
-        }
+    
 
         return (
             <div className="app-wrapper">
