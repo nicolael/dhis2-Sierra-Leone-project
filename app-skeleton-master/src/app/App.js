@@ -51,12 +51,9 @@ export default React.createClass({
 
         return (
             <div className="app-wrapper">
-                
+
                 <HeaderBar />
-                <Sidebar
-                    sections={sideBarSections}
-                    onChangeSection={this._sidebarItemClicked}
-                />
+
                 <div className="main-content">Geolocation of health facilities in Sierra Leone </div>
                 <Load/>
 
@@ -64,3 +61,10 @@ export default React.createClass({
         );
     },
 });
+
+/*
+<Sidebar
+    sections={sideBarSections}
+    onChangeSection={this._sidebarItemClicked}
+/>
+*/
