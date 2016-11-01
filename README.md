@@ -29,31 +29,31 @@ Hente oppdateringer
 * git pull
 
 Lagre endringer lokalt
-git stash 
+* git stash 
 
 Hente siste stash
-git stash pop 
+* git stash pop 
 
 Siste versjon i pullen, dropper endringene(fpr det du startet med)
-git checkout <file>
+* git checkout <file>
 
 HUSK!
-Alltid ta en git status før du gjør noe 
+* Alltid ta en git status før du gjør noe 
 
 Se hvilken branch du er på
-git branch 
+* git branch 
 
 Se alle brancher
-git branch -a
+* git branch -a
 
 Lage en ny branch 
-git branch <branch-name>
+* git branch <branch-name>
 
 Bytte branch 
-git checkout <branch-name>
+* git checkout <branch-name>
 
 Pushe branch
-git push origin <branch-name> (f.eks master)
+* git push origin <branch-name> (f.eks master)
 
 Gå til siste endring
-git revert <nr>
+* git revert <nr>
