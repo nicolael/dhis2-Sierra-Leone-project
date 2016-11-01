@@ -52,5 +52,8 @@ git branch <branch-name>
 Bytte branch 
 git checkout <branch-name>
 
+Pushe branch
+git push origin <branch-name> (f.eks master)
+
 Gå til siste endring
 git revert <nr>
