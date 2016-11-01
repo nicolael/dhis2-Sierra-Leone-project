@@ -27,3 +27,30 @@ Pushe filen til github:
 
 Hente oppdateringer
 * git pull
+
+Lagre endringer lokalt
+git stash 
+
+Hente siste stash
+git stash pop 
+
+Siste versjon i pullen, dropper endringene(fpr det du startet med)
+git checkout <file>
+
+HUSK!
+Alltid ta en git status før du gjør noe 
+
+Se hvilken branch du er på
+git branch 
+
+Se alle brancher
+git branch -a
+
+Lage en ny branch 
+git branch <branch-name>
+
+Bytte branch 
+git checkout <branch-name>
+
+Gå til siste endring
+git revert <nr>
