@@ -5,6 +5,7 @@ class Map extends Component {
 
     render(){
       const mapContainer = <div style ={{height: '100%', width:'100%'}}></div>
+      
       // Going through the markers property, map iteration
       const markers = this.props.markers.map((venue, i) => {
 
