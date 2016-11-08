@@ -47,8 +47,6 @@ export default React.createClass({
             { key: 'item2', label: 'Item 2' },
         ];
 
-    
-
         return (
             <div className="app-wrapper">
 

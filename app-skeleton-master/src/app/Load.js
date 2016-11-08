@@ -9,6 +9,7 @@ import SearchItem from './Search';
  * https://facebook.github.io/react/docs/reusable-components.html#es6-classes-and-react.createclass
  */
 export default class Load extends Component {
+
     constructor(props, context) {
         super(props, context);
 
@@ -36,39 +37,37 @@ export default class Load extends Component {
     }
 
     render() {
-        const location = {
+        
+        
+        const center = {
             lat: 8.431759,
             lng: -11.743826
         }
-
          // Marker to Map
-        const markers = [
+        let markers = [
             {
-                location: {
+                "location": {
                     lat: 8.431759,
                     lng: -11.743826
+                },
+                "location": {
+                    lat: 8.431759,
+                    lng: -10.743826
                 }
+
             }
         ]
-
-        // If the component state is set to isLoading we hide the app and show a loading message
-        if (this.state.isLoading) {
-            return (
-                <div>Loading data...</div>
-            );
-        }
         // Render the app which includes the list component and the form component
         // We hide the form component when we are in the saving state.
         return (
 
             <div className="mapAndList">
-                
                 <div className="listDiv">
-                    <SearchItem />
+                    <SearchItem items={this.state.items}/>
                 </div>
 
                 <div className ="mapDiv">
-                <Map center={location} markers={markers}/>
+                <Map center={center} items={this.state.items}/>
                 </div>
             </div>
         );
