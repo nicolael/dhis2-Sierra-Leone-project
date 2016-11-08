@@ -1,22 +1,23 @@
 TODO LIST:
 
-Search for an org. unit and get facility details, using live search (Nicholas og Sara)
-    - Live search: få opp forslag til steder mens man typer? 
+Search for an org. unit and get facility details, using live search
+    - Live search: få opp forslag til steder mens man typer? DONE
     - bruke Json til å få tak i mer info enn navn og id fra loadOrganisationUnits()
+    - Klikke på et sted og få opp informasjon (Nicholas) 
         - Bruke jQuery 
         - Javascript
-        
-Locate on map (Hanna)
- - Vise kart
+
+Locate on map
+ - Vise kart. DONE
     - Bruke Turf siden vi bruker kart (trenger ikke). Man vet hva som er innefor et polynom.
         - Trykke på kartet
         - Vise pathen
-        
-    - Sette borders: finne alle koordinatene og sette - i mellom
-
+     - Sette borders: finne alle koordinatene og sette - i mellom
+     - Vise info ved å trykke på markers (Sara) 
+     - Vise info ut i fra layers
  - Sette markers og finne koordinater
 
-Filter your search based on levels
+Filter your search based on levels (Hanna) 
  - Level 1 - 4
  - Få opp 1 marker på level 1
  - Søke først også filtrere
@@ -43,6 +44,4 @@ Present the information pertaining to the chosen facility in a drop-down menu be
 
 Hva er best å gjøre mtp Skeleton? 
     - d2 bibliotek
-    
-Vurdering av prosjekt???
-    
+
