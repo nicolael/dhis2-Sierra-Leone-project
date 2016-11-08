@@ -6,7 +6,6 @@ class Map extends Component {
 
     render(){
       const mapContainer = <div style ={{height: '100%', width:'100%'}}></div>
-      //let items = this.props.items.map((item, index) => { return { id: index, value: item.shortName} });
       //Going through the markers property, map iteration   
       var sets;
       let coordinates = this.props.items.map((item, index) => { 
@@ -27,20 +26,6 @@ class Map extends Component {
 
        });
     
-
-    /*
-      const markers = this.props.markers.map((venue, i) => {
-
-        // Creating a marker variable for elements in the array
-        const marker = {
-          position: {
-            lat: venue.location.lat,
-            lng: venue.location.lng
-          }
-        }
-        return <Marker key={i}{...marker} />
-      })
-  */
       return( 
         <GoogleMapLoader
           containerElement = { mapContainer }

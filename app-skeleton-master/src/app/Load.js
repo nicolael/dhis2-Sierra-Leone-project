@@ -43,20 +43,6 @@ export default class Load extends Component {
             lat: 8.431759,
             lng: -11.743826
         }
-         // Marker to Map
-        let markers = [
-            {
-                "location": {
-                    lat: 8.431759,
-                    lng: -11.743826
-                },
-                "location": {
-                    lat: 8.431759,
-                    lng: -10.743826
-                }
-
-            }
-        ]
         // Render the app which includes the list component and the form component
         // We hide the form component when we are in the saving state.
         return (
