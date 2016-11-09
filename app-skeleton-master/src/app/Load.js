@@ -37,8 +37,32 @@ export default class Load extends Component {
     }
 
     render() {
-        
-        
+
+      //let items = this.data.loadGeoJson("/api/26/geoFeatures.json?ou=ou:LEVEL-3");
+
+      //for(var i =0; i<items.length; i++){
+        //console.log(items[i].id);
+      //}
+      var items=[100];
+      var success
+
+      $.ajax({
+        dataType: "json",
+        url: "http://localhost8082/api/26/geoFeatures.json?ou=ou:LEVEL-2",
+        data: items,
+        success: success
+      });
+
+      if(undefined !== items && items.length){
+        for(var i =0; i<items.length; i++){
+          console.log(items[i].id);
+          console.log("Hallo")
+        }
+
+      } else {
+        console.log("Item er undefined")
+      }
+
         const center = {
             lat: 8.431759,
             lng: -11.743826
@@ -56,6 +80,8 @@ export default class Load extends Component {
                 <Map center={center} items={this.state.items}/>
                 </div>
             </div>
+
         );
+
     }
 }

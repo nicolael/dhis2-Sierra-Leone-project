@@ -1,42 +1,43 @@
 .listDiv{
     overflow: auto;
-    font-family: monospace;
-    border: 2px solid black;
-    border-radius: 25px;
+    font-family: "Arial Narrow";
+    border: 1px solid black;
+    
     float: left;
     width: 25%;
     height: 580px;
     text-align: center;
-    background-color: #B0E0E6;
-    box-shadow: 5px 5px 5px #111;
+    background-color:#ebfaeb ;
+    box-shadow: 1px 1px 1px #111;
 }
 .mapAndList{ /*Wrapper kun kart og lista*/
     width: 96%;
     height: 580px;
-    border: 2px solid blue;
     padding: 20px;
     float: left;
     margin-top: 10px;
 }
 .mapDiv{
-    border: 2px solid black;
+    border: 1px solid black;
     float: right;
     width: 70%;
     height: 580px;
-    box-shadow: 5px 5px 5px #111;
+    box-shadow: 1px 1px 1px #111;
 }
 .app-wrapper{ /*Wrapper alle componentene*/
     border: 2px solid black;
     height: 900px;
     width: 100%;
     float: center;
+    background-color:#F0F8FF;
 }
 .main-content{
     float: right;
-    border: 2px solid yellow;
-    height: 30px;
-    font-family: monospace;
-    font-size: 25px;
+    border: 1px solid black;
+    height: 34px;
+    font-family: "Arial Narrow";
+    font-size: 30px;
+    background-color: #ebfaeb;
     width: 100%;
     text-align: center;
 }

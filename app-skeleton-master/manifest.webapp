@@ -16,9 +16,5 @@
   "icons": {
     "48": "icon.png"
   },
-<<<<<<< HEAD
-  "manifest_generated_at": "Thu Nov 03 2016 22:49:51 GMT+0100 (CET)"
-=======
-  "manifest_generated_at": "Thu Nov 03 2016 11:20:04 GMT+0100 (CET)"
->>>>>>> aecbfe7cc789c633f46aa5a2bc4748851a75a92d
+  "manifest_generated_at": "Wed Nov 09 2016 10:15:24 GMT+0100 (CET)"
 }
