@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
-import Info from '.Info';
+import Info from './Info';
 import { connect } from 'react-redux';
 import { clickedMarker } from '../actions';
 

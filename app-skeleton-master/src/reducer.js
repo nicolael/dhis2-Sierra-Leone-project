@@ -22,3 +22,9 @@ function mapReducer(state = {}, action) {
         return state;
   }
 }
+
+const combinedReducers = combineReducers({
+  mapReducer
+})
+
+export default combinedReducers;
