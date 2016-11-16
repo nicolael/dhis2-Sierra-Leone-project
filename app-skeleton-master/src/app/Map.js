@@ -13,6 +13,7 @@ function mapStateToProps( state ) {
 class Map extends Component {
     // map.data.loadGeoJson("http..");
 
+
     render(){
       const mapContainer = <div style ={{height: '100%', width:'100%'}}></div>
       //Going through the markers property, map iteration
