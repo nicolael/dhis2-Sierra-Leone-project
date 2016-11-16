@@ -3,6 +3,7 @@ import { loadOrganisationUnits } from '../api';
 import List from './List';
 import Map from './Map';
 import SearchItem from './Search';
+import Info from './Info';
 
 /**
  * ES2015 class component
@@ -80,11 +81,12 @@ export default class Load extends Component {
                 </div>
 
                 <div className ="mapDiv">
-                <Map center={center} items={this.state.items}/>
+                  <div>
+                    <Info/>
+                  </div>
+                  <Map center={center} items={this.state.items}/>
                 </div>
             </div>
-
         );
-
     }
 }

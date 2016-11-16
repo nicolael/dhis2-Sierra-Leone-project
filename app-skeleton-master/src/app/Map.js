@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
+import Info from './Info';
+import { connect } from 'react-redux';
+import { clickedMarker } from '../actions';
+
+function mapStateToProps( state ) {
+  //const { dispatch } = state;
+  const { markerInfo } = state.mapReducer;
+  return {markerInfo}; //{markerInfo, dispatch}
+}
 
 class Map extends Component {
     // map.data.loadGeoJson("http..");
@@ -13,6 +22,7 @@ class Map extends Component {
           //console.log(item.coordinates+ " " + item.shortName);
           sets = item.coordinates.substr(1, item.coordinates.length - 2).split(',');
           //console.log(sets[0]+" "+sets[1]);
+          var info = item.name + "\n" + item.openingDate + "\n" + item.coordinates;
 
           const marker = {
           position: {
@@ -20,9 +30,11 @@ class Map extends Component {
             lng: parseFloat(sets[0])
           }
         }
-        return <Marker key={index}{...marker} />
+        return <Marker key={index}{...marker}
+            onClick={ () =>
+                this.props.dispatch(clickedMarker(info))
+            }/>
         }
-
        });
 
       return(
@@ -40,4 +52,4 @@ class Map extends Component {
         );
     }
 }
-export default Map
+export default connect(mapStateToProps) (Map);
