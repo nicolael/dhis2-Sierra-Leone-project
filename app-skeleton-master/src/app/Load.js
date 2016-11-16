@@ -3,6 +3,7 @@ import { loadOrganisationUnits } from '../api';
 import List from './List';
 import Map from './Map';
 import SearchItem from './Search';
+import Info from './Info';
 
 /**
  * ES2015 class component
@@ -66,7 +67,6 @@ export default class Load extends Component {
     }
 
     render() {
-        
         const center = {
             lat: 8.431759,
             lng: -11.743826
@@ -86,6 +86,10 @@ export default class Load extends Component {
                 <div className="buttons">
                     <button onClick = {this.emptyMap}>empty map</button>
                     <button onClick = {this.resetMap}>show all</button>
+                  <div>
+                    <Info/>
+                  </div>
+    
                 </div>
             </div>
         );

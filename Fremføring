@@ -1,0 +1,16 @@
+NOTATER TIL FREMFØRING:
+
+Search for an org.unit and get facility details, using live search:
+  - Valgt å ikke vise steder uten koordinater. Man må eventuelt sette disse selv i system setting. 
+    I stedet for å finne på koordinater/google vil det være mer interessant å legge vekt på de stedene vi har 
+    faktiske koordinater til. 
+  - Når man trykker på et sted vil man få opp marker med info.
+  
+Locate on map: 
+  - Gjøre steder utenfor kartet utilgjengelige, gjøre det grått/sort 
+  
+Show map:
+  - Valgt å bruke google maps. Så først på leaflet, men fant ingen gode veiledninger på dette.
+  
+
+

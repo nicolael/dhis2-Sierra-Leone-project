@@ -23,6 +23,12 @@ import 'react-tap-event-plugin';
 import App from './app/App';
 import './app/app.scss';
 
+import Store from './Store';
+import { Provider } from 'react-redux';
+
+const store = Store();
+
+
 // Render the a LoadingMask to show the user the app is in loading
 // The consecutive render after we did our setup will replace this loading mask
 // with the rendered version of the application.
@@ -34,7 +40,7 @@ render(<LoadingMask />, document.getElementById('app'));
  * @param d2 Instance of the d2 library that is returned by the `init` function.
  */
 function startApp(d2) {
-    render(<App d2={d2} />, document.querySelector('#app'));
+    render(<Provider store={store}><App d2={d2} /></Provider>, document.querySelector('#app'));
 }
 // Load the application manifest to be able to determine the location of the Api
 // After we have the location of the api, we can set it onto the d2.config object
