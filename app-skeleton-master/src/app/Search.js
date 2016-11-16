@@ -4,23 +4,18 @@ import React, { Component, PropTypes } from 'react';
 
 class SearchItem extends Component{
 
-  HiItems(items) {
-    console.log(items)
-  }  
-  
-    render(){
+  render(){
 
     let items = this.props.items.map((item, index) => { return { id: index, value: item.shortName} });
     
       return( 
-	      <div id="searchDiv">
-
+	      <div>
 	       	<Search items={items}
-	                placeholder='Search for a health facility'
-	                maxSelected={3}
+	                placeholder=' Search for a health facility '
+	                maxSelected={5}
 	                multiple={true}
-	                onItemsChanged={this.HiItems.bind(this)} />
-            </div>
+	                onItemsChanged={this.props.HiItems.bind(this)} />
+        </div>
         );
     }
 }
