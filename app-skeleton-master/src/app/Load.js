@@ -77,6 +77,9 @@ export default class Load extends Component {
         return (
 
             <div className="mapAndList">
+                <div>
+                    <Info/>
+                </div>
                 <div className="listDiv">
                     <SearchItem items={this.state.items} HiItems={this.HiItems}/> 
                 </div>
@@ -86,10 +89,6 @@ export default class Load extends Component {
                 <div className="buttons">
                     <button onClick = {this.emptyMap}>empty map</button>
                     <button onClick = {this.resetMap}>show all</button>
-                  <div>
-                    <Info/>
-                  </div>
-    
                 </div>
             </div>
         );

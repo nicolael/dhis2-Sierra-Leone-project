@@ -19,12 +19,10 @@ class Info extends Component {
     console.log("info: " + this.props.markerInfo)
 
     return(
-    <div >
+    <div className="info">
       <h3> {this.props.markerInfo} </h3>
     </div>
   );
   }
-
 }
-
 export default connect(mapStateToProps) (Info);
