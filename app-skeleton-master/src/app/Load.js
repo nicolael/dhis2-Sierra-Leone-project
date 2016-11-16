@@ -43,25 +43,28 @@ export default class Load extends Component {
       //for(var i =0; i<items.length; i++){
         //console.log(items[i].id);
       //}
-      var items=[100];
-      var success
+  /*    const basicAuth = `Basic ${btoa('admin:district')}`;
+      const fetchOptions = {
+          method: 'GET',
+          headers: {
+              Authorization: basicAuth,
+              'Content-Type': 'application/json',
+          },
+      };
 
-      $.ajax({
-        dataType: "json",
-        url: "http://localhost8082/api/26/geoFeatures.json?ou=ou:LEVEL-2",
-        data: items,
-        success: success
-      });
-
-      if(undefined !== items && items.length){
-        for(var i =0; i<items.length; i++){
-          console.log(items[i].id);
-          console.log("Hallo")
+      function promises(response){
+        if(response.status != 0)
+          return Promise.resolve(response);
         }
+        return Promise.reject(response);
 
-      } else {
-        console.log("Item er undefined")
-      }
+      export function test(){
+        return fetch(`http://localhost:8082/api/geoFeatures.json?ou=ou:LEVEL-2`, fetchOptions)
+         .then(promises)
+         .then(response => response.json())
+         .then(({organisationUnits}) => organisationUnits);
+      }*/
+
 
         const center = {
             lat: 8.431759,
