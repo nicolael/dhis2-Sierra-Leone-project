@@ -13,13 +13,16 @@ export default class Load extends Component {
 
     constructor(props, context) {
         super(props, context);
-
         // Set some initial state variables that are used within the component
         this.state = {
             isSaving: false,
             isLoading: true,
             items: [],
+            base: [],
         };
+        this.HiItems  = this.HiItems.bind(this);
+        this.emptyMap = this.emptyMap.bind(this);
+        this.resetMap = this.resetMap.bind(this);
     }
 
     componentDidMount() {
@@ -27,64 +30,66 @@ export default class Load extends Component {
     }
 
     loadOrganisationUnits() {
-        // Loads the organisation units from the api and sets the loading state to false and puts the items onto the component state.
+    // Loads the organisation units from the api and sets the loading state to false and puts the items onto the component state.
         loadOrganisationUnits()
             .then((organisationUnits) => {
                 this.setState({
                     isLoading: false,
                     items: organisationUnits,
+                    base: organisationUnits, //added this so I can get back to initial state (bad solution)
                 });
             });
     }
 
-    render() {
+    HiItems(items){
+        var test = [];
+        var a = [];
+        a = this.state.items;
 
-      //let items = this.data.loadGeoJson("/api/26/geoFeatures.json?ou=ou:LEVEL-3");
-
-      //for(var i =0; i<items.length; i++){
-        //console.log(items[i].id);
-      //}
-  /*    const basicAuth = `Basic ${btoa('admin:district')}`;
-      const fetchOptions = {
-          method: 'GET',
-          headers: {
-              Authorization: basicAuth,
-              'Content-Type': 'application/json',
-          },
-      };
-
-      function promises(response){
-        if(response.status != 0)
-          return Promise.resolve(response);
+        for(var i=0; i<items.length; i++){
+          for(var j=0; j<a.length; j++){
+            if(items[i].value == a[j].shortName){
+              test[i]=a[j];
+              //console.log(test[i]);
+            }
         }
-        return Promise.reject(response);
+      }
+      console.log(test.length);
+      this.setState({base: test });    
+    }
 
-      export function test(){
-        return fetch(`http://localhost:8082/api/geoFeatures.json?ou=ou:LEVEL-2`, fetchOptions)
-         .then(promises)
-         .then(response => response.json())
-         .then(({organisationUnits}) => organisationUnits);
-      }*/
+    emptyMap(){
+       this.setState({base: [] }); 
+    }
 
+    resetMap(){
+        this.setState({base: this.state.items});
+    }
 
+    render() {
         const center = {
             lat: 8.431759,
             lng: -11.743826
         }
+        //console.log(this.state.items);
         // Render the app which includes the list component and the form component
         // We hide the form component when we are in the saving state.
         return (
 
             <div className="mapAndList">
                 <div className="listDiv">
-                    <SearchItem items={this.state.items}/>
+                    <SearchItem items={this.state.items} HiItems={this.HiItems}/> 
                 </div>
-
                 <div className ="mapDiv">
+                    <Map center={center} items={this.state.base}/>
+                </div>
+                <div className="buttons">
+                    <button onClick = {this.emptyMap}>empty map</button>
+                    <button onClick = {this.resetMap}>show all</button>
                   <div>
                     <Info/>
                   </div>
-                  <Map center={center} items={this.state.items}/>
+    
                 </div>
             </div>
         );

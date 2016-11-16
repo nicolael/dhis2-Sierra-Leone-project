@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, Polygon } from 'react-google-maps';
-import Info from './Info';
-import { connect } from 'react-redux';
-import { clickedMarker } from '../actions';
-
-function mapStateToProps( state ) {
-  //const { dispatch } = state;
-  const { markerInfo } = state.mapReducer;
-  return {markerInfo}; //{markerInfo, dispatch}
-}
 
 class Map extends Component {
-    // map.data.loadGeoJson("http..");
 
 
     render(){
+      
+        /*just for testing purposes*/
+        var triangleCoords = [
+            {lat: 25.774, lng: -80.190},
+            {lat: 18.466, lng: -66.118},
+            {lat: 32.321, lng: -64.757}
+        ];
+
+        //console.log(triangleCoords);
+
       const mapContainer = <div style ={{height: '100%', width:'100%'}}></div>
       //Going through the markers property, map iteration
       var sets;
+
       let coordinates = this.props.items.map((item, index) => {
         if(item.featureType=="POINT"){
           //console.log(item.coordinates+ " " + item.shortName);
@@ -36,6 +37,8 @@ class Map extends Component {
                 this.props.dispatch(clickedMarker(info))
             }/>
         }
+
+      
        });
        //Polygon for level 2
        var polyset = [];
@@ -93,9 +96,9 @@ class Map extends Component {
             <GoogleMap
               defaultZoom={8}
               defaultCenter={this.props.center}
-              options={{streetViewControl: false, mapTypeControl: false}}>
+              options={{streetViewControl: false, mapTypeControl: false}}>      
+            {coordinates}              
               <Polygon paths = {polyset} />
-
             </GoogleMap>
 
           } />
