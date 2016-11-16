@@ -4,6 +4,12 @@ import Info from './Info';
 import { connect } from 'react-redux';
 import { clickedMarker } from '../actions';
 
+function mapStateToProps( state ) {
+  //const { dispatch } = state;
+  const { markerInfo } = state.mapReducer;
+  return {markerInfo}; //{markerInfo, dispatch}
+}
+
 class Map extends Component {
 
     render(){
