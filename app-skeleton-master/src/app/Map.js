@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, Polygon } from 'react-google-maps';
+import Info from './Info';
+import { connect } from 'react-redux';
+import { clickedMarker } from '../actions';
 
 class Map extends Component {
 
-
     render(){
-      
+
         /*just for testing purposes*/
         var triangleCoords = [
             {lat: 25.774, lng: -80.190},
@@ -38,7 +40,7 @@ class Map extends Component {
             }/>
         }
 
-      
+
        });
        //Polygon for level 2
        var polyset = [];
@@ -96,8 +98,8 @@ class Map extends Component {
             <GoogleMap
               defaultZoom={8}
               defaultCenter={this.props.center}
-              options={{streetViewControl: false, mapTypeControl: false}}>      
-            {coordinates}              
+              options={{streetViewControl: false, mapTypeControl: false}}>
+            {coordinates}
               <Polygon paths = {polyset} />
             </GoogleMap>
 
