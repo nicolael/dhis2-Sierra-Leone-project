@@ -1,7 +1,6 @@
 import React from 'react';
 import log from 'loglevel';
 import { loadOrganisationUnits } from '../api';
-//import List from './List';
 import Map from './Map';
 import Load from './Load'
 import SearchItem from './Search'
@@ -49,20 +48,9 @@ export default React.createClass({
 
         return (
             <div className="app-wrapper">
-
                 <HeaderBar />
-
-                <div className="main-content">Geolocation of health facilities in Sierra Leone </div>
-                <Load/>
-
+                <Load />
             </div>
         );
     },
 });
-
-/*
-<Sidebar
-    sections={sideBarSections}
-    onChangeSection={this._sidebarItemClicked}
-/>
-*/

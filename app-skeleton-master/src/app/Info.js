@@ -20,7 +20,7 @@ class Info extends Component {
 
     return(
     <div className="info">
-      <h3> {this.props.markerInfo} </h3>
+      <p>{this.props.markerInfo}</p>
     </div>
   );
   }

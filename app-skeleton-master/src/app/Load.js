@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { loadOrganisationUnits } from '../api';
-import List from './List';
 import Map from './Map';
 import SearchItem from './Search';
 import Info from './Info';
+import SaveOrg from './SaveOrg'
 
 /**
  * ES2015 class component
@@ -80,11 +80,16 @@ export default class Load extends Component {
                 <div>
                     <Info/>
                 </div>
-                <div className="listDiv">
-                    <SearchItem items={this.state.items} HiItems={this.HiItems}/> 
+                <div className="form">
+                    <p>Register organisation</p>
+                    <SaveOrg />
                 </div>
+
                 <div className ="mapDiv">
                     <Map center={center} items={this.state.base}/>
+                </div>
+                <div className="listDiv">
+                    <SearchItem items={this.state.items} HiItems={this.HiItems}/> 
                 </div>
                 <div className="buttons">
                     <button onClick = {this.emptyMap}>empty map</button>

@@ -4,10 +4,10 @@
     font-family: "Arial Narrow";
     border: 1px solid black;
     float: left;
-    width: 25%;
-    height: 580px;
+    width: 27%;
+    height: 430px;
     text-align: center;
-    background-color:#ebfaeb ;
+    background-color:#ebfaeb;
     box-shadow: 1px 1px 1px #111;
 }
 .mapAndList{ /*Wrapper kun kart og lista*/
@@ -15,40 +15,51 @@
     height: 580px;
     padding: 20px;
     float: left;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .mapDiv{
-    margin-top: 20px;
+    margin-top: 15px;
     border: 1px solid black;
     float: right;
     width: 70%;
-    height: 580px;
+    height: 600px;
     box-shadow: 1px 1px 1px #111;
 }
 .app-wrapper{ /*Wrapper alle componentene*/
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     height: 900px;
     width: 100%;
     float: center;
-    background-color:#F0F8FF;
-}
-.main-content{
-    float: right;
-    border: 1px solid black;
-    height: 34px;
-    font-family: "Arial Narrow";
-    font-size: 30px;
-    background-color: #ebfaeb;
-    width: 100%;
-    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
 }
 .info{
     text-align: center;
     float: right;
     border: 1px solid black;
-    width: 100%;
-    height: 40px;
+    width: 70%;
+    height: 35px;
 }
 .buttons{
     float: right;
+    margin-top: 5px;
+}
+.form{
+    padding-left: 5px;
+    float: left;   
+    font-family: "Arial Narrow";
+    border: 1px solid black;
+    width: 27%;
+    box-shadow: 1px 1px 1px #111;
+    height: 360px;
+    background-color:#ebfaeb;
+    overflow: scroll;
+    box-sizing: border-box;
+}
+input[type=text] {
+    width: 99%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
