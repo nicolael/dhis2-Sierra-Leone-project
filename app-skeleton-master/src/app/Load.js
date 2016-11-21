@@ -4,6 +4,7 @@ import Map from './Map';
 import SearchItem from './Search';
 import Info from './Info';
 import SaveOrg from './SaveOrg'
+import EditOrg from './EditOrg'
 
 /**
  * ES2015 class component
@@ -19,10 +20,13 @@ export default class Load extends Component {
             isLoading: true,
             items: [],
             base: [],
+            showEditOrg: false,
         };
         this.HiItems  = this.HiItems.bind(this);
         this.emptyMap = this.emptyMap.bind(this);
         this.resetMap = this.resetMap.bind(this);
+        this.showDialog = this.showDialog.bind(this);
+        this.hideDialog = this.hideDialog.bind(this);
     }
 
     componentDidMount() {
@@ -55,15 +59,25 @@ export default class Load extends Component {
         }
       }
       console.log(test.length);
-      this.setState({base: test });    
+      this.setState({base: test });
     }
 
     emptyMap(){
-       this.setState({base: [] }); 
+       this.setState({base: [] });
     }
 
     resetMap(){
         this.setState({base: this.state.items});
+    }
+
+
+    showDialog(){
+      this.setState({showEditOrg: true});
+      console.log("onClick called");
+    }
+
+    hideDialog(){
+        this.setState({showEditOrg: false});
     }
 
     render() {
@@ -89,12 +103,20 @@ export default class Load extends Component {
                     <Map center={center} items={this.state.base}/>
                 </div>
                 <div className="listDiv">
-                    <SearchItem items={this.state.items} HiItems={this.HiItems}/> 
+                    <SearchItem items={this.state.items} HiItems={this.HiItems}/>
                 </div>
                 <div className="buttons">
-                    <button onClick = {this.emptyMap}>empty map</button>
-                    <button onClick = {this.resetMap}>show all</button>
+                    <button onClick = {this.emptyMap}>Empty map</button>
+                    <button onClick = {this.resetMap}>Show all</button>
+                    <button onClick = {this.showDialog}>Edit Info</button>
                 </div>
+              {this.state.showEditOrg ?
+                <div className="popup">
+                  <input type="Submit" value="Edit Info" onClick={this.hideDialog}/>
+                    <EditOrg/>
+                </div>
+              : null}
+
             </div>
         );
     }

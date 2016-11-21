@@ -13,7 +13,6 @@ function mapStateToProps( state ) {
 class Map extends Component {
 
     render(){
-
         /*just for testing purposes*/
         var triangleCoords = [
             {lat: 25.774, lng: -80.190},
