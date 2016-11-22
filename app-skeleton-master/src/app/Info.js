@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect} from 'react-redux';
 import ReactDom from 'react-dom';
+import EditOrg from './EditOrg'
 //import Popup from 'react-popup';
 
 /*
@@ -14,33 +15,41 @@ function mapStateToProps( state ) {
 
 class Info extends Component {
 
-/*  constructor(props){
-    this.popout = this.popout.bind(this);
-    this.popoutClosed = this.popoutClosed.bind(this);
-    this.state = {
-      isPoppedOut: false;
+    constructor(props) {
+        super(props);
+        // Set some initial state variables that are used within the component
+        this.state = {
+            showEditOrg: false
+        };
+        this.showDialog = this.showDialog.bind(this);
+        this.hideDialog = this.hideDialog.bind(this);
     }
-  }
-
-  popout(){
-    this.setState({
-      isPoppedOut:true
-    });
-  }
-
-  popoutClosed(){
-    this.setState({
-      isPoppedOut:false
-    });
-  }
-*/
+    
+    showDialog(){
+      this.setState({showEditOrg: true});
+      console.log("onClick called");
+    }
+ 
+    hideDialog(){
+        this.setState({showEditOrg: false});
+    }
 
   render() {
     console.log("info: " + this.props.markerInfo)
 
     return(
       <div className="info">
-        <p>{this.props.markerInfo}</p>
+        {this.props.markerInfo}
+        <br/>
+          <div className="buttons">
+              <button onClick = {this.showDialog}>Edit Info</button>
+          </div>
+          {this.state.showEditOrg ?
+            <div className="popup">
+              <input type="Submit" value="Edit Info" onClick={this.hideDialog}/>
+                <EditOrg/>
+            </div>
+          : null} 
       </div>
     );
   }
