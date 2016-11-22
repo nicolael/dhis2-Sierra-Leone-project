@@ -2,29 +2,156 @@ import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, Polygon } from 'react-google-maps';
 import Info from './Info';
 import { connect } from 'react-redux';
-import { clickedMarker } from '../actions';
+import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons } from '../actions';
 
 function mapStateToProps( state ) {
-  //const { dispatch } = state;
   const { markerInfo } = state.mapReducer;
-  return {markerInfo}; //{markerInfo, dispatch}
+  const { polyState } = state.mapReducer;
+  const { markerState } = state.mapReducer;
+  const { counterState } = state.counterReducer;
+  return {markerInfo, polyState, markerState, counterState};
 }
 var currentPath = "ImspTQPwCqd";
 
 class Map extends Component {
 
-    render(){
-        /*just for testing purposes*/
-        var triangleCoords = [
-            {lat: 25.774, lng: -80.190},
-            {lat: 18.466, lng: -66.118},
-            {lat: 32.321, lng: -64.757}
-        ];
+  /*
+  Helper method to set the polyState
+  */
+  setPolyState(polygon) {
+    this.props.dispatch(clickedPolygon(polygon))
+  }
 
-        //console.log(triangleCoords);
+  setFirstPolygon() {
+    if(!this.props.counterState) {
+      //Set counterState to true
+      this.props.dispatch(showFirstLevelPolygons(true))
+      /*This is a bad solution to find the first level*/
+      this.nextPolygon("ImspTQPwCqd")
+     }
+  }
+
+  nextPolygon(path) {
+    var polyset = [];
+    let finalPolygon = [];
+    let polygon = this.props.items.map((item, index) => {
+      var s;
+      if(item.featureType=="MULTI_POLYGON" || item.featureType=="POLYGON") {
+        if(item.parent.id == path) { //(item.path.match(/\//g) || []).length
+          //console.log(item.name)
+            let allPos = [];
+            //parse the coordinates to JSON
+            allPos.push(JSON.parse(item.coordinates))
+            //Need to give the coordinates a latlng
+            polyset = allPos.map( coords =>{
+              return coords.map( coords2 => {
+                return coords2.map( coords3 =>{
+                  return coords3.map( finalCoord =>{
+                    return {
+                      //The order is switched, so lat is position 1 and lng 2
+                      lat: finalCoord[1],
+                      lng: finalCoord[0]
+                    }
+                  })
+                })
+              })
+            })
+
+            finalPolygon.push({
+              path: polyset,
+              info: item
+            })
+        }
+      }
+    });
+    //Code for markers
+    if(finalPolygon.length == 0) {
+      this.getMarker(path);
+      //Call a method to set the polyState to only the polygon last clicked
+      this.getOnePolygon(path);
+    } else {
+      this.setPolyState(finalPolygon);
+    }
+  }
+
+  /*
+  */
+  getOnePolygon(currentId) {
+    var polyset = [];
+    let finalPolygon = [];
+    let polygon = this.props.items.map((item, index) => {
+      var s;
+      if(item.featureType=="MULTI_POLYGON" || item.featureType=="POLYGON") {
+        if(item.id == currentId) { //(item.path.match(/\//g) || []).length
+            let allPos = [];
+            //parse the coordinates to JSON
+            allPos.push(JSON.parse(item.coordinates))
+            //Need to give the coordinates a latlng
+            polyset = allPos.map( coords =>{
+              return coords.map( coords2 => {
+                return coords2.map( coords3 =>{
+                  return coords3.map( finalCoord =>{
+                    return {
+                      //The order is switched, so lat is position 1 and lng 2
+                      lat: finalCoord[1],
+                      lng: finalCoord[0]
+                    }
+                  })
+                })
+              })
+            })
+            finalPolygon.push({
+              path: polyset,
+              info: item
+            })
+        }
+      }
+    });
+    this.setPolyState(finalPolygon);
+  }
+
+  /*
+  Sets a state for markers at the last level
+  finds all the markers for that has the parent sent in as a parameter
+  */
+  getMarker(parent) {
+    var sets;
+    let coordinates = this.props.items.map((item, index) => {
+      if(item.featureType=="POINT"){
+        if(item.parent.id == parent) {
+
+          sets = item.coordinates.substr(1, item.coordinates.length - 2).split(',');
+
+          var info = [];
+          info['name'] = item.name;
+          info['openingDate'] = item.openingDate;
+          info['coordinates'] = item.coordinates;
+          info['id'] = item.id;
+
+          //var info = item.name + "\n" + item.openingDate + "\n" + item.coordinates;
+
+          const marker = {
+            position: {
+              lat: parseFloat(sets[1]),
+              lng: parseFloat(sets[0])
+            }
+          }
+        return <Marker key={index}{...marker}
+            onClick={ () =>
+                this.props.dispatch(clickedMarker(info))
+            }/>
+        }
+      }
+     });
+     this.props.dispatch(clickedLastPolygon(coordinates))
+  }
+
+
+    render(){
 
       const mapContainer = <div style ={{height: '100%', width:'100%'}}></div>
       //Going through the markers property, map iteration
+      /*
       var sets;
 
       let coordinates = this.props.items.map((item, index) => {
@@ -45,44 +172,8 @@ class Map extends Component {
                 this.props.dispatch(clickedMarker(info))
             }/>
         }
-
-
        });
-       //Polygon for level 2
-       var polyset2 = [];
-       let finalPolygon2 = [];
-       let polygon2 = this.props.items.map((item, index) => {
-         var s;
-         if(item.featureType=="MULTI_POLYGON" || item.featureType=="POLYGON") {
-           //ImspTQPwCqd = top parent id(Sierra Leone)
-           if(item.parent.id == currentPath) {
-               let allPos = [];
-               //parse the coordinates to JSON
-               allPos.push(JSON.parse(item.coordinates))
-               //Need to give the coordinates a latlng
-               polyset2 = allPos.map( coords =>{
-                 return coords.map( coords2 => {
-                   return coords2.map( coords3 =>{
-                     return coords3.map( finalCoord =>{
-                       return {
-                         //The order is switched, so lat is position 1 and lng 2
-                         lat: finalCoord[1],
-                         lng: finalCoord[0]
-                       }
-                     })
-                   })
-                 })
-               })
-
-               finalPolygon2.push({
-                 path: polyset2,
-                 info: item
-               })
-
-               //hello.push(polyset2)
-           }
-         }
-       });
+       */
 
       return(
         <GoogleMapLoader
@@ -91,22 +182,22 @@ class Map extends Component {
             <GoogleMap
               defaultZoom={8}
               defaultCenter={this.props.center}
-              options={{streetViewControl: false, mapTypeControl: false}}>
-            {coordinates}
-
+              options={{streetViewControl: false, mapTypeControl: false}}
+              onClick={(e) => console.log(e.latLng.lng())}
+            >
+            {/*coordinates*/}
+            <div className="polyButton">
+              <button onClick = {() => this.setFirstPolygon()}>show polygons</button>
+            </div>
             {
-              finalPolygon2.map( content => {
+              this.props.polyState == null ? null : this.props.polyState.map( content => {
                 var info = content.info;
                 //path is an array of arrays of arrays etc..
-                //console.log(content.path)
                 return content.path.map( coords => {
                   return coords.map( coords2 => {
                     return coords2.map( finalCoords => {
                       return (<Polygon
-                        paths={finalCoords} onClick={ (e) =>
-                          // Update currentPath, and make the polygon for
-                          // this area
-                            console.log(info)
+                        paths={finalCoords} onClick={ () => this.nextPolygon(info.id)
                       }
                       />)
                     })
@@ -114,20 +205,13 @@ class Map extends Component {
                 })
               })
             }
+
+            {
+              this.props.markerState == null ? null : this.props.markerState
+            }
             </GoogleMap>
           } />
         );
     }
 }
 export default connect(mapStateToProps) (Map);
-
-
-// Last solution: <Polygon paths = {polyset} />
-/*
-<Polygon
-strokeColor= "#000"
-path= {triangleCoords}
-key= {Date.now()}*/
-
-//{coordinates}
-//<Polygon paths = {polyset} />

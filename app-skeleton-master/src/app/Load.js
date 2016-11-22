@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import { loadOrganisationUnits } from '../api';
+import { connect } from 'react-redux';
 import Map from './Map';
 import SearchItem from './Search';
 import Info from './Info';
 import SaveOrg from './SaveOrg'
+import EditOrg from './EditOrg'
+import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons } from '../actions';
+
+function mapStateToProps(state) {
+  const { polyState } = state.mapReducer;
+  const { markerState } = state.mapReducer;
+  const { counterState } = state.counterReducer;
+
+  return {counterState, polyState, markerState};
+}
 /**
  * ES2015 class component
  * https://facebook.github.io/react/docs/reusable-components.html#es6-classes-and-react.createclass
  */
-export default class Load extends Component {
+class Load extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -60,6 +71,9 @@ export default class Load extends Component {
 
     emptyMap(){
        this.setState({base: [] });
+       this.props.dispatch(clickedPolygon([]));
+       this.props.dispatch(clickedLastPolygon([]));
+       this.props.dispatch(showFirstLevelPolygons(false));
     }
 
     resetMap(){
@@ -103,3 +117,5 @@ export default class Load extends Component {
         );
     }
 }
+
+export default connect(mapStateToProps) (Load);
