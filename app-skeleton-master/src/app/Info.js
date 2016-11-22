@@ -36,11 +36,11 @@ class Info extends Component {
 */
 
   render() {
-    console.log("info: " + this.props.markerInfo)
+    //console.log("info: " + this.props.markerInfo)
 
     return(
       <div className="info">
-        <p>{this.props.markerInfo}</p>
+        <p>{this.props.markerInfo == null ? null : this.props.markerInfo.name}</p>
       </div>
     );
   }
