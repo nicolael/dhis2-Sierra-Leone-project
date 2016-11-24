@@ -2,7 +2,8 @@ export const MARKER_CLICKED = 'MARKER_CLICKED';
 export const POLYGON_CLICKED = 'POLYGON_CLICKED';
 export const LAST_POLYGON = 'LAST_POLYGON';
 export const COUNTER = 'COUNTER';
-
+export const SEARCHSHOW = 'SEARCHSHOW';
+export const MAP_CLICKED = 'MAP_CLICKED';
 
 /*
 Different actions to be taken when we want to change a state
@@ -42,5 +43,21 @@ export function showFirstLevelPolygons(counterState) {
   return {
     type: COUNTER,
     counterState
+  }
+}
+
+/**/
+export function showSearch(searchState) {
+  return {
+    type: SEARCHSHOW,
+    searchState
+  }
+}
+
+/**/
+export function clickedMap(coordState) {
+  return {
+    type: MAP_CLICKED,
+    coordState
   }
 }

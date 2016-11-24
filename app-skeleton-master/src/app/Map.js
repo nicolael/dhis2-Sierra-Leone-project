@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, Polygon } from 'react-google-maps';
 import Info from './Info';
 import { connect } from 'react-redux';
-import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons } from '../actions';
+import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons, clickedMap } from '../actions';
 
 function mapStateToProps( state ) {
   const { markerInfo } = state.mapReducer;
   const { polyState } = state.mapReducer;
   const { markerState } = state.mapReducer;
+  const { coordState } = state.mapReducer;
   const { counterState } = state.counterReducer;
-  return {markerInfo, polyState, markerState, counterState};
+  const { searchState } = state.counterReducer;
+  return {markerInfo, polyState, markerState, counterState, searchState, coordState};
 }
 var currentPath = "ImspTQPwCqd";
 
@@ -22,12 +24,12 @@ class Map extends Component {
     this.props.dispatch(clickedPolygon(polygon))
   }
 
-  setFirstPolygon() {
+  setFirstPolygon(id) {
     if(!this.props.counterState) {
       //Set counterState to true
       this.props.dispatch(showFirstLevelPolygons(true))
       /*This is a bad solution to find the first level*/
-      this.nextPolygon("ImspTQPwCqd")
+      this.nextPolygon(id)
      }
   }
 
@@ -183,11 +185,12 @@ class Map extends Component {
               defaultZoom={8}
               defaultCenter={this.props.center}
               options={{streetViewControl: false, mapTypeControl: false}}
-              onClick={(e) => console.log(e.latLng.lng())}
+              onClick={(e) => this.props.dispatch(clickedMap(e)) }
             >
             {/*coordinates*/}
             <div className="polyButton">
-              <button onClick = {() => this.setFirstPolygon()}>show polygons</button>
+              <button onClick = {() => this.setFirstPolygon("ImspTQPwCqd")}>show polygons</button>
+              <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>show search</button>
             </div>
             {
               this.props.polyState == null ? null : this.props.polyState.map( content => {

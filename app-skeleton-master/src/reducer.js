@@ -9,7 +9,9 @@ import {
   MARKER_CLICKED,
   POLYGON_CLICKED,
   LAST_POLYGON,
-  COUNTER
+  MAP_CLICKED,
+  COUNTER,
+  SEARCHSHOW
 } from './actions';
 
 /*
@@ -29,6 +31,10 @@ function mapReducer(state = {}, action) {
       return Object.assign( {}, state, {
         markerState: action.markerState
     })
+    case MAP_CLICKED:
+      return Object.assign( {}, state, {
+        coordState: action.coordState
+      })
     default:
       return state;
   }
@@ -39,6 +45,10 @@ function counterReducer(state = false, action) {
     case COUNTER:
       return Object.assign( {}, state, {
         counterState: action.counterState
+      })
+    case SEARCHSHOW:
+      return Object.asign( {}, state, {
+        searcState: action.searcState
       })
     default:
     return state;

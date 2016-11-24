@@ -6,7 +6,7 @@ import SearchItem from './Search';
 import Info from './Info';
 import SaveOrg from './SaveOrg'
 import EditOrg from './EditOrg'
-import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons } from '../actions';
+import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons, showSearch } from '../actions';
 
 function mapStateToProps(state) {
   const { polyState } = state.mapReducer;
@@ -66,6 +66,12 @@ class Load extends Component {
         }
       }
       console.log(test.length);
+      if(test[0] != null) {
+        //console.log(test[0].parent.id);
+        this.props.dispatch(showSearch(test[0].parent.id))
+      } else if(test.length == 0) {
+        this.emptyMap();
+      }
       this.setState({base: test });
     }
 
@@ -85,6 +91,16 @@ class Load extends Component {
     }
 
     render() {
+
+        var set = [];
+        let parents = this.state.items.map(item => {
+          if((item.path.match(/\//g) || []).length == 3) {
+            console.log("item.id")
+            set.push(item.id)
+            if(item.id == "YuQRtpLP10I")
+              console.log(item.name)
+          }
+        })
         const center = {
             lat: 8.431759,
             lng: -11.743826
@@ -100,7 +116,7 @@ class Load extends Component {
                 </div>
                 <div className="form">
                     <p>Register organisation</p>
-                    <SaveOrg />
+                    <SaveOrg parent = {set}/>
                 </div>
 
                 <div className ="mapDiv">
