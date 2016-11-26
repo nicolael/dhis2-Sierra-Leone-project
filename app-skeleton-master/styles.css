@@ -70,7 +70,6 @@ input[type=text] {
   height: 360px;
   z-index: 1;
   font-family: "Arial Narrow";
-  border: 1px solid black;
   text-align: center;
   background-color:#ebfaeb;
   position:absolute;

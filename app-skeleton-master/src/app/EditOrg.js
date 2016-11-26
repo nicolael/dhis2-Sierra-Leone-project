@@ -15,8 +15,8 @@ class EditOrg extends Component{
     this.state = {
       // Setting default values
         name: this.props.markerInfo.name,
-        lat: this.props.markerInfo.sets[1],
-        lng:this.props.markerInfo.sets[0],
+        lat: this.props.markerInfo.lat,
+        lng:this.props.markerInfo.lng,
 
       };
 

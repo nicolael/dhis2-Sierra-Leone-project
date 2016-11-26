@@ -23,6 +23,7 @@ class Info extends Component {
         };
         this.showDialog = this.showDialog.bind(this);
         this.hideDialog = this.hideDialog.bind(this);
+
     }
 
     showDialog(){
@@ -35,7 +36,7 @@ class Info extends Component {
     }
 
   render() {
-    console.log("info: " + this.props.markerInfo)
+    //console.log("info: " + this.props.markerInfo)
 
     return(
       <div className="info">
@@ -44,8 +45,7 @@ class Info extends Component {
           <div className="buttons">
               <button onClick = {this.showDialog}>Edit Info</button>
           </div>
-
-
+          
           {this.state.showEditOrg ?
             <div className="popup">
 
@@ -53,6 +53,7 @@ class Info extends Component {
                 <input type="Submit" value="Edit Info" onClick={this.hideDialog}/>
             </div>
           : null}
+
       </div>
     );
   }
