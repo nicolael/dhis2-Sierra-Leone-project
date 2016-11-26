@@ -4,8 +4,6 @@ import Map from './Map';
 import SearchItem from './Search';
 import Info from './Info';
 import SaveOrg from './SaveOrg'
-import EditOrg from './EditOrg'
-
 /**
  * ES2015 class component
  * https://facebook.github.io/react/docs/reusable-components.html#es6-classes-and-react.createclass
@@ -20,12 +18,12 @@ export default class Load extends Component {
             isLoading: true,
             items: [],
             base: [],
-            showEditOrg: false,
+            //showEditOrg: false,
         };
         this.HiItems  = this.HiItems.bind(this);
         this.emptyMap = this.emptyMap.bind(this);
         this.resetMap = this.resetMap.bind(this);
-        this.showDialog = this.showDialog.bind(this);
+        //this.showDialog = this.showDialog.bind(this);
         this.hideDialog = this.hideDialog.bind(this);
     }
 
@@ -70,12 +68,6 @@ export default class Load extends Component {
         this.setState({base: this.state.items});
     }
 
-
-    showDialog(){
-      this.setState({showEditOrg: true});
-      console.log("onClick called");
-    }
-
     hideDialog(){
         this.setState({showEditOrg: false});
     }
@@ -86,8 +78,8 @@ export default class Load extends Component {
             lng: -11.743826
         }
         //console.log(this.state.items);
-        // Render the app which includes the list component and the form component
-        // We hide the form component when we are in the saving state.
+        //Render the app which includes the list component and the form component
+        //We hide the form component when we are in the saving state.
         return (
 
             <div className="mapAndList">
@@ -108,15 +100,7 @@ export default class Load extends Component {
                 <div className="buttons">
                     <button onClick = {this.emptyMap}>Empty map</button>
                     <button onClick = {this.resetMap}>Show all</button>
-                    <button onClick = {this.showDialog}>Edit Info</button>
                 </div>
-              {this.state.showEditOrg ?
-                <div className="popup">
-                  <input type="Submit" value="Edit Info" onClick={this.hideDialog}/>
-                    <EditOrg/>
-                </div>
-              : null}
-
             </div>
         );
     }

@@ -1,31 +1,47 @@
 import React, { Component, PropTypes } from 'react';
 import { saveOrganisationUnit } from '../api';
+import { connect} from 'react-redux';
+
+function mapStateToProps( state ) {
+  //const { dispatch } = state;
+  const { markerInfo } = state.mapReducer;
+  return {markerInfo}; //{markerInfo, dispatch}
+}
 
 class EditOrg extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
-        name: '',
-        shortName: '',
-        lat:'',
-        lng:'',
-        parentId:''};
+      // Setting default values
+        name: this.props.markerInfo.name,
+        lat: this.props.markerInfo.sets[1],
+        lng:this.props.markerInfo.sets[0],
+
+      };
 
     this.handleName = this.handleName.bind(this);
-    this.handleId   = this.handleId.bind(this);
+    //this.handleId   = this.handleId.bind(this);
     this.handleLat = this.handleLat.bind(this);
     this.handleLng = this.handleLng.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  getValuesById(){
+
+  }
+
+
 
   handleName(event) {
     this.setState({name: event.target.value});
   }
-  handleId(event) {
+
+/*  handleId(event) {
+
     this.setState({id: event.target.value});
-  }
+  }*/
+
   handleLat(event){
     this.setState({lat: event.target.value});
   }
@@ -38,24 +54,23 @@ class EditOrg extends Component{
     event.preventDefault();
 
 
-    saveOrganisationUnit({"name":"helloo", "shortName":"yoomafaaka","openingDate":"1970-01-01"});
+    //saveOrganisationUnit({"name":"helloo", "shortName":"yoomafaaka","openingDate":"1970-01-01"});
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         Name:
-        <input type="text" name={this.state.name} onChange={this.handleName} />
-        ID:
-        <input type="text" id={this.state.id} onChange={this.handleId} />
+        <input type="text" name={this.state.name} onChange={(e) => this.handleName(e)} value={this.state.name} />
+
         Lat:
-        <input type="text" lat={this.state.lat} onChange={this.handleLat} />
+        <input type="text" lat={this.state.lat} onChange={(e) => this.handleLat(e)} value={this.state.lat} />
+
         Lng:
-        <input type="text" lng={this.state.lng} onChange={this.handleLng} />
-        <input type="submit" value="Submit" />
+        <input type="text" lng={this.state.lng} onChange={(e) => this.handleLng(e)} value={this.state.lng} />
       </form>
     );
   }
 }
 
-export default EditOrg
+export default connect(mapStateToProps)(EditOrg);
