@@ -69,8 +69,11 @@ class SaveOrg extends Component {
     }
 
   render() {
+<<<<<<< HEAD
 
     console.log(this.state.id)
+=======
+>>>>>>> 0f6903c2bdff456ce598303fc06b658e2a917979
 
     return (
       <form onSubmit={this.handleSubmit}>

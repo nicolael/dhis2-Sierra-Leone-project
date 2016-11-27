@@ -47,8 +47,8 @@ function counterReducer(state = false, action) {
         counterState: action.counterState
       })
     case SEARCHSHOW:
-      return Object.asign( {}, state, {
-        searcState: action.searcState
+      return Object.assign( {}, state, {
+        searchState: action.searchState
       })
     default:
     return state;

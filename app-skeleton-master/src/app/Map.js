@@ -127,8 +127,10 @@ class Map extends Component {
           var info = [];
           info['name'] = item.name;
           info['openingDate'] = item.openingDate;
-          info['coordinates'] = item.coordinates;
+          //info['coordinates'] = item.coordinates;
           info['id'] = item.id;
+          info['lat'] = parseFloat(sets[1]);
+          info ['lng'] = parseFloat(sets[0]);
 
           //var info = item.name + "\n" + item.openingDate + "\n" + item.coordinates;
 

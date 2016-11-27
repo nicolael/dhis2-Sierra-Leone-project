@@ -29,6 +29,7 @@ class Load extends Component {
             isLoading: true,
             items: [],
             base: [],
+
         };
         this.HiItems    = this.HiItems.bind(this);
         this.emptyMap   = this.emptyMap.bind(this);

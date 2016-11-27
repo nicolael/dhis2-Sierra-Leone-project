@@ -23,13 +23,14 @@ class Info extends Component {
         };
         this.showDialog = this.showDialog.bind(this);
         this.hideDialog = this.hideDialog.bind(this);
+
     }
-    
+
     showDialog(){
       this.setState({showEditOrg: true});
       console.log("onClick called");
     }
- 
+
     hideDialog(){
         this.setState({showEditOrg: false});
     }
@@ -44,12 +45,15 @@ class Info extends Component {
           <div className="buttons">
               <button onClick = {this.showDialog}>Edit Info</button>
           </div>
+          
           {this.state.showEditOrg ?
             <div className="popup">
-              <input type="Submit" value="Edit Info" onClick={this.hideDialog}/>
+
                 <EditOrg/>
+                <input type="Submit" value="Edit Info" onClick={this.hideDialog}/>
             </div>
-          : null} 
+          : null}
+
       </div>
     );
   }

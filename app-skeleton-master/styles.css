@@ -65,16 +65,16 @@ input[type=text] {
 }
 
 .popup{
-  width: 200px;
-  height: 330px;
   border: 1px solid black;
+  width: 27%;
+  height: 360px;
+  z-index: 1;
+  font-family: "Arial Narrow";
   text-align: center;
-  background-color: grey;
+  background-color:#ebfaeb;
   position:absolute;
   top: 50%;
   left: 50%;
-  z-index: 1;
   margin-right: -50%;
   transform: translate(-50%, -50%)
-
 }
