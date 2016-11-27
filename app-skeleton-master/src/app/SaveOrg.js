@@ -3,8 +3,7 @@ import { saveOrganisationUnit } from '../api';
 import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
-  console.log("saveorg");
-  console.log(state)
+
   const { coordState } = state.mapReducer;
   return {coordState};
 }
@@ -13,9 +12,8 @@ class SaveOrg extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-    	name: 'Yuuu1',
+    	name: '',
     	shortName: 'Yuuu1',
     	level : 4,
     	featureType: 'POINT',
@@ -34,6 +32,7 @@ class SaveOrg extends Component {
     this.handleLat  = this.handleLat.bind(this);
     this.handleLng  = this.handleLng.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
 
@@ -49,20 +48,29 @@ class SaveOrg extends Component {
   handleLng(event){
   	this.setState({lng: event.target.value});
   }
-
-
   handleSubmit(event) {
     alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+" coords" +this.state.coordinates);
     event.preventDefault();
-    //saveOrganisationUnit({"name":"helloo", "shortName":"yoomafaaka","openingDate":"1970-01-01"});
-    console.log(this.state);
     saveOrganisationUnit(this.state);
   }
+  handleChange(event) {
+    this.setState({id: event.target.value});
+  }
+
+  drop(Data){
+        
+        //var Data     = ['this', 'example', 'isnt', 'funny'],
+        var MakeItem = function(X) {
+              return <option>{X}</option>;
+        };
+
+        return <select id ={this.state.id} onChange={this.handleChange}>{Data.map(MakeItem)}</select>;
+    
+    }
 
   render() {
-    console.log(this.props.coordState + " test");
-    console.log("parents")
-    console.log(this.props.parent)
+
+    console.log(this.state.id)
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -72,6 +80,11 @@ class SaveOrg extends Component {
         <input type="text" lat={this.state.lat} placeholder = {this.props.coordState == null ? null : this.props.coordState.latLng.lat()} onChange={this.handleLat} />
         Lng:
         <input type="text" lng={this.state.lng} placeholder = {this.props.coordState == null ? null : this.props.coordState.latLng.lng()} onChange={this.handleLng} />
+        Select parent :
+        <label>
+        {this.drop(this.props.parent)}
+        </label>
+        <br />
         <input type="submit" value="Submit" />
       </form>
     );
