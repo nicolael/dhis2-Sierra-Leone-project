@@ -50,3 +50,11 @@ export function saveOrganisationUnit(organisationUnit) {
         // Log any errors to the console. (Should probably do some better error handling);
         .catch(error => console.error(error));
 }
+
+export function editOrganisationUnit(organisationUnit) {
+  console.log(organisationUnit);
+    return fetch(`${serverUrl}/organisationUnits/${organisationUnit.id}`, Object.assign({}, fetchOptions, {method: 'PUT', body: JSON.stringify(organisationUnit)}))
+        .then(onlySuccessResponses)
+        .then(response => response.json())
+        .catch(error => console.error(error));
+}

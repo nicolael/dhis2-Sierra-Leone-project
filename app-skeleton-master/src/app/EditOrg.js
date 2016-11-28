@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import { saveOrganisationUnit } from '../api';
+import { saveOrganisationUnit, editOrganisationUnit } from '../api';
 import { connect} from 'react-redux';
+import { editInfo } from '../actions';
 
 function mapStateToProps( state ) {
   //const { dispatch } = state;
+  const { showEditOrg } = state.counterReducer;
   const { markerInfo } = state.mapReducer;
-  return {markerInfo}; //{markerInfo, dispatch}
+  return {markerInfo, showEditOrg}; //{markerInfo, dispatch}
 }
 
 class EditOrg extends Component{
@@ -16,27 +18,20 @@ class EditOrg extends Component{
       // Setting default values
         name: this.props.markerInfo.name,
         lat: this.props.markerInfo.lat,
-        lng:this.props.markerInfo.lng,
+        lng: this.props.markerInfo.lng,
 
       };
 
     this.handleName = this.handleName.bind(this);
-    //this.handleId   = this.handleId.bind(this);
     this.handleLat = this.handleLat.bind(this);
     this.handleLng = this.handleLng.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  getValuesById(){
-
-  }
-
-
 
   handleName(event) {
     this.setState({name: event.target.value});
   }
-
 /*  handleId(event) {
 
     this.setState({id: event.target.value});
@@ -49,17 +44,27 @@ class EditOrg extends Component{
     this.setState({lng: event.target.value});
   }
 
+
   handleSubmit(event) {
-    alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+this.state.id+" coords["+this.state.lat+","+this.state.lng+"]");
+    this.props.dispatch(editInfo(false))
+    alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+this.props.markerInfo.id+" coords["+this.state.lat+","+this.state.lng+"]");
     event.preventDefault();
 
 
     //saveOrganisationUnit({"name":"helloo", "shortName":"yoomafaaka","openingDate":"1970-01-01"});
+    var editcoordinates = "[ " + this.state.lng + "," + this.state.lat + "]";
+    //ny fetch på organisationUnit med id, bare endre det vi vil
+    editOrganisationUnit({"name": this.state.name, "shortName": this.state.name, "openingDate": "1970-01-01", "id": this.props.markerInfo.id, "parent":{id: 'YuQRtpLP10I'}});
+    //console.log(editcoordinates);
   }
+
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        Edit Organisation information
+        <br></br>
+
         Name:
         <input type="text" name={this.state.name} onChange={(e) => this.handleName(e)} value={this.state.name} />
 
@@ -68,6 +73,7 @@ class EditOrg extends Component{
 
         Lng:
         <input type="text" lng={this.state.lng} onChange={(e) => this.handleLng(e)} value={this.state.lng} />
+        <input type="Submit" value="Edit Info2"/>
       </form>
     );
   }
