@@ -13,28 +13,23 @@ class SaveOrg extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    	name: '',
-    	shortName: 'Yuuu1',
+    	name: 'abcInf5750',
+    	shortName: 'abcInf5750',
     	level : 4,
     	featureType: 'POINT',
     	coordinates: '[-11.1447,10.4149]',
-    	lat:'',
-    	lng:'',
     	openingDate:'2016-01-01',
       //Must fill out parent for it to show up
       parent: {
-        id: 'YuQRtpLP10I'
+        id: 'DNRAeXT9IwS'
       }
     };
 
     this.handleName = this.handleName.bind(this);
     this.handleId   = this.handleId.bind(this);
-    this.handleLat  = this.handleLat.bind(this);
-    this.handleLng  = this.handleLng.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
 
   handleName(event) {
     this.setState({name: event.target.value});
@@ -49,17 +44,18 @@ class SaveOrg extends Component {
   	this.setState({lng: event.target.value});
   }
   handleSubmit(event) {
-    alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+" coords" +this.state.coordinates);
+    //this.setState({coordinates: '['+this.state.lng+","+this.state.lat});
+    alert('An org was submitted:\n'+"name : "+this.state.name+"\nlat : " +this.state.lat + "\nlong :"+this.state.lng+"\n coordinates : "+this.state.coordinates);
     event.preventDefault();
     saveOrganisationUnit(this.state);
   }
   handleChange(event) {
-    this.setState({id: event.target.value});
+    this.setState({parent: {id:event.target.value}});
+    console.log(this.state.parent.id);
   }
 
   drop(Data){
         
-        //var Data     = ['this', 'example', 'isnt', 'funny'],
         var MakeItem = function(X) {
               return <option>{X}</option>;
         };
@@ -68,21 +64,23 @@ class SaveOrg extends Component {
     
     }
 
-  render() {
-<<<<<<< HEAD
+  getLat(){
+    var test = this.props.coordState == null ? null : this.props.coordState.latLng.lat();
+    return test;
+  }
+  getLong(){
+    var test = this.props.coordState == null ? null : this.props.coordState.latLng.lng();
+    return test;
+  }
 
-    console.log(this.state.id)
-=======
->>>>>>> 0f6903c2bdff456ce598303fc06b658e2a917979
+  render() {
+
+    console.log(this.state.parent.id)
 
     return (
       <form onSubmit={this.handleSubmit}>
         Name:
         <input type="text" name={this.state.name} onChange={this.handleName} />
-        Lat:
-        <input type="text" lat={this.state.lat} placeholder = {this.props.coordState == null ? null : this.props.coordState.latLng.lat()} onChange={this.handleLat} />
-        Lng:
-        <input type="text" lng={this.state.lng} placeholder = {this.props.coordState == null ? null : this.props.coordState.latLng.lng()} onChange={this.handleLng} />
         Select parent :
         <label>
         {this.drop(this.props.parent)}
