@@ -46,6 +46,7 @@ class EditOrg extends Component{
 
 
   handleSubmit(event) {
+    console.log("handleSubmit")
     this.props.dispatch(editInfo(false))
     alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+this.props.markerInfo.id+" coords["+this.state.lat+","+this.state.lng+"]");
     event.preventDefault();
