@@ -11,7 +11,8 @@ import {
   LAST_POLYGON,
   MAP_CLICKED,
   COUNTER,
-  SEARCHSHOW
+  SEARCHSHOW,
+  EDITORG
 } from './actions';
 
 /*
@@ -49,6 +50,10 @@ function counterReducer(state = false, action) {
     case SEARCHSHOW:
       return Object.assign( {}, state, {
         searchState: action.searchState
+      })
+    case EDITORG:
+      return Object.assign( {}, state, {
+        showEditOrg: action.showEditOrg
       })
     default:
     return state;

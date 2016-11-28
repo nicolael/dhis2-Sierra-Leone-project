@@ -34,7 +34,7 @@ class Load extends Component {
         this.HiItems    = this.HiItems.bind(this);
         this.emptyMap   = this.emptyMap.bind(this);
         this.resetMap   = this.resetMap.bind(this);
-        this.hideDialog = this.hideDialog.bind(this);
+    
     }
 
     componentDidMount() {
@@ -85,10 +85,6 @@ class Load extends Component {
 
     resetMap(){
         this.setState({base: this.state.items});
-    }
-
-    hideDialog(){
-        this.setState({showEditOrg: false});
     }
 
     render() {

@@ -4,6 +4,7 @@ export const LAST_POLYGON = 'LAST_POLYGON';
 export const COUNTER = 'COUNTER';
 export const SEARCHSHOW = 'SEARCHSHOW';
 export const MAP_CLICKED = 'MAP_CLICKED';
+export const EDITORG = 'EDITORG';
 
 /*
 Different actions to be taken when we want to change a state
@@ -59,5 +60,12 @@ export function clickedMap(coordState) {
   return {
     type: MAP_CLICKED,
     coordState
+  }
+}
+
+export function editInfo(showEditOrg){
+  return{
+    type: EDITORG,
+    showEditOrg
   }
 }
