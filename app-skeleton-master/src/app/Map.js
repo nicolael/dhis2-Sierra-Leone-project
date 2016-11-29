@@ -167,8 +167,8 @@ class Map extends Component {
             >
             {/*coordinates*/}
             <div className="polyButton">
-              <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>show polygons</button>
-              <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>show search</button>
+              <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>Show polygons</button>
+              <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>Show search</button>
 
             </div>
             {
