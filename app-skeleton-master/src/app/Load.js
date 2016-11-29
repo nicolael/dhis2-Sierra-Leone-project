@@ -66,7 +66,6 @@ class Load extends Component {
             }
         }
       }
-      console.log(test.length);
       if(test[0] != null) {
         //console.log(test[0].parent.id);
         this.props.dispatch(showSearch(test[0].parent.id))
@@ -99,6 +98,13 @@ class Load extends Component {
 
         }
       })
+      var startLevelId = [];
+      let startLevel = this.state.items.map(item => {
+        if((item.path.match(/\//g) || []).length == 1) {
+          startLevelId.push(item.id)
+          //console.log(item.id)
+        }
+      })
         const center = {
             lat: 8.431759,
             lng: -11.743826
@@ -118,14 +124,14 @@ class Load extends Component {
                 </div>
 
                 <div className ="mapDiv">
-                    <Map center={center} items={this.state.base}/>
+                    <Map center={center} items={this.state.base} mainId = {startLevelId}/>
                 </div>
                 <div className="listDiv">
                     <SearchItem items={this.state.items} HiItems={this.HiItems}/>
                 </div>
                 <div className="buttons">
                     <button onClick = {this.emptyMap}>Empty map</button>
-                    <button onClick = {this.resetMap}>Show all</button>
+                    <button onClick = {this.resetMap}>Set polygons</button>
                 </div>
             </div>
         );

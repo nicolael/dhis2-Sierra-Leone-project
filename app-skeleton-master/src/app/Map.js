@@ -154,30 +154,6 @@ class Map extends Component {
     render(){
 
       const mapContainer = <div style ={{height: '100%', width:'100%'}}></div>
-      //Going through the markers property, map iteration
-      /*
-      var sets;
-
-      let coordinates = this.props.items.map((item, index) => {
-        if(item.featureType=="POINT"){
-          //console.log(item.coordinates+ " " + item.shortName);
-          sets = item.coordinates.substr(1, item.coordinates.length - 2).split(',');
-          //console.log(sets[0]+" "+sets[1]);
-          var info = item.name + "\n" + item.openingDate + "\n" + item.coordinates;
-
-          const marker = {
-          position: {
-            lat: parseFloat(sets[1]),
-            lng: parseFloat(sets[0])
-          }
-        }
-        return <Marker key={index}{...marker}
-            onClick={ () =>
-                this.props.dispatch(clickedMarker(info))
-            }/>
-        }
-       });
-       */
 
       return(
         <GoogleMapLoader
@@ -191,8 +167,9 @@ class Map extends Component {
             >
             {/*coordinates*/}
             <div className="polyButton">
-              <button onClick = {() => this.setFirstPolygon("ImspTQPwCqd")}>show polygons</button>
-              <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>show search</button>
+              <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>Show polygons</button>
+              <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>Show search</button>
+
             </div>
             {
               this.props.polyState == null ? null : this.props.polyState.map( content => {

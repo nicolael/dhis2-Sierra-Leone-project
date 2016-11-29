@@ -31,7 +31,6 @@ class EditOrg extends Component{
 
   componentDidMount() {
     this.loadOrg();
-    //console.log(this.state)
   }
 
   handleName(event) {
@@ -48,7 +47,6 @@ class EditOrg extends Component{
   loadOrg() {
   loadOrganisationUnitToEdit(this.props.markerInfo.id)
     .then((organisationUnits) => {
-      console.log(organisationUnits)
       this.setState({
         orgUnit: organisationUnits
       });
@@ -57,7 +55,6 @@ class EditOrg extends Component{
 
 
   handleSubmit(event) {
-    console.log("handleSubmit")
     this.props.dispatch(editInfo(false))
 
     var orgUnitEdit = this.state.orgUnit;
@@ -68,7 +65,6 @@ class EditOrg extends Component{
 
 
     //Updated orgUnit
-    console.log(orgUnitEdit)
 
     alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+this.props.markerInfo.id+" coords["+this.state.lat+","+this.state.lng+"]");
     event.preventDefault();

@@ -1,3 +1,5 @@
+import { config} from 'd2/lib/d2'
+
 /**
  * `serverUrl` contains the api location of the server. You would generally get the baseUrl from the manifest.webapp
  * as described here http://dhis2.github.io/dhis2-docs/master/en/developer/html/apps_creating_apps.html
@@ -5,7 +7,8 @@
  * `basicAuth` contains the username and password to send with the request as the basic authentication token. This is only needed when you develop locally and need CORS support (https://developer.mozilla.org/en-US/docs/Web/HTTP).
  * You obviously should not do this for your production apps.
  */
-const serverUrl = 'http://localhost:8082/api';
+//const serverUrl = 'http://localhost:8082/api';
+const serverUrl = config.baseUrl;
 const basicAuth = `Basic ${btoa('admin:district')}`;
 
 /**
@@ -33,6 +36,7 @@ function onlySuccessResponses(response) {
 //https://play.dhis2.org/demo/api/metadata?assumeTrue=false&organisationUnits=true&lastUpdated=2014-08-01
 //https://play.dhis2.org/demo/api/metadata.json?assumeTrue=false&organisationUnits=true&lastUpdated=2014-08-01
 export function loadOrganisationUnits() {
+    console.log(config.baseUrl)
     // Load the organisation units but only the first level and the do not use paging
     return fetch(`${serverUrl}/metadata?assumeTrue=false&organisationUnits=true&level=2&lastUpdated=2014-08-01`, fetchOptions)
         .then(onlySuccessResponses)
@@ -52,7 +56,6 @@ export function saveOrganisationUnit(organisationUnit) {
 }
 
 export function editOrganisationUnit(organisationUnit) {
-  //console.log(organisationUnit);
     return fetch(`${serverUrl}/organisationUnits/${organisationUnit.id}`, Object.assign({}, fetchOptions, {method: 'PUT', body: JSON.stringify(organisationUnit)}))
         .then(onlySuccessResponses)
         .then(response => response.json())
@@ -64,5 +67,10 @@ export function loadOrganisationUnitToEdit(orgUnitId) {
       .then(onlySuccessResponses)
       .then(response => response.json())
       // pick the organisationUnits property from the payload
-      //.then(({ organisationUnits }) => organisationUnits);
+}
+
+export function mainfest() {
+  return fetch ('../../manifest.webapp')
+  .then(onlySuccessResponses)
+  .then(response => console.log(response.json()))
 }
