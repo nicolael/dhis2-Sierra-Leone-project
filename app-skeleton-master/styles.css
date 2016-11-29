@@ -41,7 +41,6 @@
     float: right;
     border: 1px solid black;
     width: 70%;
-<<<<<<< HEAD
     height: 165px;
     background-color:#ebfaeb;
     overflow: auto;
@@ -53,10 +52,6 @@
     z-index: 1;
     position:absolute;
     transform: translate(-50%, -50%)
-=======
-    height: 150px;
-    background-color: #d2e4c8;
->>>>>>> cbf951c113b91a15998067580cd6d91b9c47ac14
 }
 .buttons{
     float: right;
