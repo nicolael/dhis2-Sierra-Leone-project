@@ -132,7 +132,7 @@ class Load extends Component {
                 </div>
                 <div className="buttons">
                     <button onClick = {this.emptyMap}>Empty map</button>
-                    <button onClick = {this.resetMap}>Show all</button>
+                    <button onClick = {this.resetMap}>Set polygons</button>
                 </div>
             </div>
         );

@@ -169,6 +169,7 @@ class Map extends Component {
             <div className="polyButton">
               <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>show polygons</button>
               <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>show search</button>
+
             </div>
             {
               this.props.polyState == null ? null : this.props.polyState.map( content => {

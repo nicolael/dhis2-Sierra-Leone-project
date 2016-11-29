@@ -7,7 +7,7 @@
     width: 27%;
     height: 430px;
     text-align: center;
-    background-color:#ebfaeb;
+    background-color:#d2e4c8;
     box-shadow: 1px 1px 1px #111;
 }
 .mapAndList{ /*Wrapper kun kart og lista*/
@@ -24,7 +24,7 @@
     width: 70%;
     height: 630px;
     box-shadow: 1px 1px 1px #111;
-    
+
 }
 .app-wrapper{ /*Wrapper alle componentene*/
     /*border: 2px solid black;*/
@@ -41,7 +41,7 @@
     border: 1px solid black;
     width: 70%;
     height: 150px;
-    background-color:#ebfaeb;
+    background-color: #d2e4c8;
 }
 .buttons{
     float: right;
@@ -56,9 +56,10 @@
     width: 27%;
     box-shadow: 1px 1px 1px #111;
     height: 360px;
-    background-color:#ebfaeb;
+    background-color:#d2e4c8;
     overflow: scroll;
     box-sizing: border-box;
+
 }
 input[type=text] {
     width: 99%;
@@ -76,7 +77,7 @@ input[type=text] {
   z-index: 1;
   font-family: "Arial Narrow";
   text-align: center;
-  background-color:#ebfaeb;
+  background-color:#d2e4c8;
   position:absolute;
   top: 50%;
   left: 50%;
