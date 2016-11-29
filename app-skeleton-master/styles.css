@@ -22,8 +22,9 @@
     border: 1px solid black;
     float: right;
     width: 70%;
-    height: 600px;
+    height: 630px;
     box-shadow: 1px 1px 1px #111;
+    overflow: hidden;
 }
 .app-wrapper{ /*Wrapper alle componentene*/
     /*border: 2px solid black;*/
@@ -33,15 +34,19 @@
     background-color: rgba(0, 0, 0, 0);
 }
 .info{
+    padding-top: 10px;
+    font-family: "Arial Narrow";
     text-align: center;
     float: right;
     border: 1px solid black;
     width: 70%;
-    height: 35px;
+    height: 150px;
+    background-color:#ebfaeb;
 }
 .buttons{
     float: right;
     margin-top: 5px;
+    z-index: 1;
 }
 .form{
     padding-left: 5px;
