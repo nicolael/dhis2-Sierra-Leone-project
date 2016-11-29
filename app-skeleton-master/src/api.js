@@ -56,7 +56,6 @@ export function saveOrganisationUnit(organisationUnit) {
 }
 
 export function editOrganisationUnit(organisationUnit) {
-  //console.log(organisationUnit);
     return fetch(`${serverUrl}/organisationUnits/${organisationUnit.id}`, Object.assign({}, fetchOptions, {method: 'PUT', body: JSON.stringify(organisationUnit)}))
         .then(onlySuccessResponses)
         .then(response => response.json())
@@ -68,7 +67,6 @@ export function loadOrganisationUnitToEdit(orgUnitId) {
       .then(onlySuccessResponses)
       .then(response => response.json())
       // pick the organisationUnits property from the payload
-      //.then(({ organisationUnits }) => organisationUnits);
 }
 
 export function mainfest() {

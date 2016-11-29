@@ -66,7 +66,6 @@ class Load extends Component {
             }
         }
       }
-      console.log(test.length);
       if(test[0] != null) {
         //console.log(test[0].parent.id);
         this.props.dispatch(showSearch(test[0].parent.id))

@@ -21,12 +21,7 @@ class Info extends Component {
         super(props);
         // Set some initial state variables that are used within the component
     }
-  /*  
-      showDialog(){
-      console.log("test +++");
-      this.props.dispatch(editInfo(true));
-    }
-  */
+
   render() {
 
     return(

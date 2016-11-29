@@ -61,13 +61,6 @@ class SaveOrg extends Component {
         return <select id ={this.state.id} onChange={this.handleChange}>{Data.map(MakeItem)}</select>;
     }
 
-  getLat(event){
-    console.log(this.state.lat);
-  }
-  getLong(event){
-    console.log(this.state.lng);
-  }
-
   getCoords(event){
     var coords = "["+this.props.coordState.latLng.lng()+","+this.props.coordState.latLng.lat()+"]"
     this.setState({coordinates : coords});
@@ -75,8 +68,6 @@ class SaveOrg extends Component {
   }
 
   render() {
-
-    console.log(this.state.parent.id)
 
     return (
       <form onSubmit={this.handleSubmit}>
