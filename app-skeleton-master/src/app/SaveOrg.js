@@ -43,20 +43,18 @@ class SaveOrg extends Component {
 
 
   handleSubmit(event) {
-
     alert('An organisation unit was submitted\n'+"Name : "+this.state.name
       +"\nParent : "+this.state.parent.id+"\nCoordinates : "+this.state.coordinates);
     event.preventDefault();
     saveOrganisationUnit(this.state);
   }
-  
+
   handleChange(event) {
-    this.setState({parent: {id:event.target.value}});
-    console.log(this.state.parent.id);
+    this.setState({parent: {id:this.props.parentId[event.target.value]}});
   }
 
   drop(Data){
-        
+
         var MakeItem = function(X) {
               return <option>{X}</option>;
         };
@@ -93,7 +91,7 @@ class SaveOrg extends Component {
         <br />
         Select parent :
         <label>
-        {this.drop(this.props.parent)}
+        {this.drop(this.props.parentName)}
         </label>
         <br />
         <input type="submit" value="Submit" />

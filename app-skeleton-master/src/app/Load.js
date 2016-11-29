@@ -34,7 +34,7 @@ class Load extends Component {
         this.HiItems    = this.HiItems.bind(this);
         this.emptyMap   = this.emptyMap.bind(this);
         this.resetMap   = this.resetMap.bind(this);
-    
+
     }
 
     componentDidMount() {
@@ -89,15 +89,16 @@ class Load extends Component {
 
     render() {
 
-        var set = [];
-        let parents = this.state.items.map(item => {
-          if((item.path.match(/\//g) || []).length == 3) {
-            console.log("item.id")
-            set.push(item.id)
-            if(item.id == "YuQRtpLP10I")
-              console.log(item.name)
-          }
-        })
+      var nameSet = [];
+      var idSet = [];
+      let parents = this.state.items.map(item => {
+        if((item.path.match(/\//g) || []).length == 3) {
+
+          nameSet.push(nameSet[item.name] = item.name)
+          idSet.push(idSet[item.name] = item.id)
+
+        }
+      })
         const center = {
             lat: 8.431759,
             lng: -11.743826
@@ -113,7 +114,7 @@ class Load extends Component {
                 </div>
                 <div className="form">
                     <p>Register organisation</p>
-                    <SaveOrg parent = {set}/>
+                    <SaveOrg parentName = {nameSet} parentId = {idSet}/>
                 </div>
 
                 <div className ="mapDiv">
