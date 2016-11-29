@@ -69,7 +69,7 @@ class SaveOrg extends Component {
   }
 
   getCoords(event){
-    var coords = "["+this.props.coordState.latLng.lat()+","+this.props.coordState.latLng.lng()+"]"
+    var coords = "["+this.props.coordState.latLng.lng()+","+this.props.coordState.latLng.lat()+"]"
     this.setState({coordinates : coords});
     event.preventDefault();
   }

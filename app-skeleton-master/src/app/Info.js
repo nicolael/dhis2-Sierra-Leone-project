@@ -21,30 +21,27 @@ class Info extends Component {
         super(props);
         // Set some initial state variables that are used within the component
     }
-
-  /*  showDialog(){
+  /*  
+      showDialog(){
       console.log("test +++");
       this.props.dispatch(editInfo(true));
     }
-*/
+  */
   render() {
-    //console.log("info: " + this.props.markerInfo)
 
     return(
       <div className="info">
-        {this.props.markerInfo == null ? null : this.props.markerInfo.name}
-        <br/>
+        <h2>Facility Name : {this.props.markerInfo == null ? null : this.props.markerInfo.name}</h2>
+        <p>Opening date : {this.props.markerInfo == null ? null : this.props.markerInfo.openingDate}</p>
+        <p>ID : {this.props.markerInfo == null ? null : this.props.markerInfo.id}</p>
           <div className="buttons">
               <button onClick = { () =>
                 this.props.dispatch(editInfo(true))
-
               }>Edit Info</button>
           </div>
-
           {this.props.showEditOrg ?
             <div className="popup">
               <EditOrg/>
-
             </div>
           : null}
       </div>
