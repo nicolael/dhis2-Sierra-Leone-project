@@ -98,6 +98,13 @@ class Load extends Component {
 
         }
       })
+      var startLevelId = [];
+      let startLevel = this.state.items.map(item => {
+        if((item.path.match(/\//g) || []).length == 1) {
+          startLevelId.push(item.id)
+          //console.log(item.id)
+        }
+      })
         const center = {
             lat: 8.431759,
             lng: -11.743826
@@ -117,7 +124,7 @@ class Load extends Component {
                 </div>
 
                 <div className ="mapDiv">
-                    <Map center={center} items={this.state.base}/>
+                    <Map center={center} items={this.state.base} mainId = {startLevelId}/>
                 </div>
                 <div className="listDiv">
                     <SearchItem items={this.state.items} HiItems={this.HiItems}/>
