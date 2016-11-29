@@ -5,7 +5,7 @@
     border: 1px solid black;
     float: left;
     width: 27%;
-    height: 430px;
+    height: 445px;
     text-align: center;
     background-color:#d2e4c8;
     box-shadow: 1px 1px 1px #111;
@@ -22,7 +22,7 @@
     border: 1px solid black;
     float: right;
     width: 70%;
-    height: 630px;
+    height: 638px;
     box-shadow: 1px 1px 1px #111;
 
 }
@@ -34,18 +34,29 @@
     background-color: #d2e4c8;
 }
 .info{
-    padding-top: 10px;
+    vertical-align: middle;
+    display:block;
     font-family: "Arial Narrow";
     text-align: center;
     float: right;
     border: 1px solid black;
     width: 70%;
-    height: 150px;
-    background-color: #d2e4c8;
+    height: 165px;
+    background-color:#ebfaeb;
+    overflow: auto;
+}
+.polyButton{
+    float: right;
+    margin-top: 15px;
+    margin-left: 90px;
+    z-index: 1;
+    position:absolute;
+    transform: translate(-50%, -50%)
 }
 .buttons{
     float: right;
     margin-top: 5px;
+    margin-bottom: 5px;
     z-index: 1;
 }
 .form{

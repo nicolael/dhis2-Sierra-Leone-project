@@ -62,6 +62,10 @@ class EditOrg extends Component{
 
     var orgUnitEdit = this.state.orgUnit;
     orgUnitEdit.name = this.state.name;
+    var coords = '['+this.state.lng+','+this.state.lat+']';
+    orgUnitEdit.coordinates = coords;
+    alert("Coordinates are now : "+orgUnitEdit.coordinates);
+
 
     //Updated orgUnit
 

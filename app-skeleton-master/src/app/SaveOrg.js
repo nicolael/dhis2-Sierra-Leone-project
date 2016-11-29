@@ -19,8 +19,6 @@ class SaveOrg extends Component {
     	featureType: 'POINT',
     	coordinates: '[-11.1447,10.4149]',
     	openingDate:'2016-01-01',
-      lat:'',
-      lng:'',
       value:'',
       //Must fill out parent for it to show up
       parent: {
@@ -32,8 +30,6 @@ class SaveOrg extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCoords = this.getCoords.bind(this);
-    this.getLat = this.getLat.bind(this);
-    this.getLong = this.getLong.bind(this);
   }
 
   handleName(event) {
