@@ -34,14 +34,25 @@
     background-color: rgba(0, 0, 0, 0);
 }
 .info{
+    vertical-align: middle;
+    display: block;
     padding-top: 10px;
     font-family: "Arial Narrow";
     text-align: center;
     float: right;
     border: 1px solid black;
     width: 70%;
-    height: 150px;
+    height: 165px;
     background-color: #d2e4c8;
+    overflow: auto;
+}
+.polyButton{
+    float: right;
+    margin-top: 15px;
+    margin-left: 90px;
+    z-index: 1;
+    position: absolute;
+    transform: translate(-50%, -50%)
 }
 .buttons{
     float: right;
