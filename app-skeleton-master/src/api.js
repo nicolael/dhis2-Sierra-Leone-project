@@ -9,6 +9,8 @@ import { config} from 'd2/lib/d2'
  */
 //const serverUrl = 'http://localhost:8082/api';
 const serverUrl = config.baseUrl;
+const serverUrl2 = 'http://localhost:8082/api';
+
 const basicAuth = `Basic ${btoa('admin:district')}`;
 
 /**
@@ -56,21 +58,15 @@ export function saveOrganisationUnit(organisationUnit) {
 }
 
 export function editOrganisationUnit(organisationUnit) {
-    return fetch(`${serverUrl}/organisationUnits/${organisationUnit.id}`, Object.assign({}, fetchOptions, {method: 'PUT', body: JSON.stringify(organisationUnit)}))
+    return fetch(`${serverUrl2}/organisationUnits/${organisationUnit.id}`, Object.assign({}, fetchOptions, {method: 'PUT', body: JSON.stringify(organisationUnit)}))
         .then(onlySuccessResponses)
         .then(response => response.json())
         .catch(error => console.error(error));
 }
 
 export function loadOrganisationUnitToEdit(orgUnitId) {
-  return fetch(`${serverUrl}/organisationUnits/${orgUnitId}`, fetchOptions)
+  return fetch(`${serverUrl2}/organisationUnits/${orgUnitId}`, fetchOptions)
       .then(onlySuccessResponses)
       .then(response => response.json())
       // pick the organisationUnits property from the payload
-}
-
-export function mainfest() {
-  return fetch ('../../manifest.webapp')
-  .then(onlySuccessResponses)
-  .then(response => console.log(response.json()))
 }
