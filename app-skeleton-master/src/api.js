@@ -58,3 +58,11 @@ export function editOrganisationUnit(organisationUnit) {
         .then(response => response.json())
         .catch(error => console.error(error));
 }
+
+export function loadOrganisationUnitToEdit(orgUnitId) {
+  return fetch(`${serverUrl}/organisationUnits/${orgUnitId}`, fetchOptions)
+      .then(onlySuccessResponses)
+      .then(response => response.json())
+      // pick the organisationUnits property from the payload
+      //.then(({ organisationUnits }) => organisationUnits);
+}
