@@ -48,7 +48,7 @@ class Load extends Component {
                 this.setState({
                     isLoading: false,
                     items: organisationUnits,
-                    base: organisationUnits, //added this so I can get back to initial state (bad solution)
+                    base: organisationUnits,
                 });
             });
     }
@@ -62,12 +62,10 @@ class Load extends Component {
           for(var j=0; j<a.length; j++){
             if(items[i].value == a[j].shortName){
               test[i]=a[j];
-              //console.log(test[i]);
             }
         }
       }
       if(test[0] != null) {
-        //console.log(test[0].parent.id);
         this.props.dispatch(showSearch(test[0].parent.id))
       } else if(test.length == 0) {
         this.emptyMap();
@@ -109,7 +107,6 @@ class Load extends Component {
             lat: 8.431759,
             lng: -11.743826
         }
-        //console.log(this.state.items);
         //Render the app which includes the list component and the form component
         //We hide the form component when we are in the saving state.
         return (

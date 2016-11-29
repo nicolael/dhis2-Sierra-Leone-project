@@ -33,16 +33,16 @@ class Map extends Component {
      }
   }
 
+  // Sets the state to the next polygon
   nextPolygon(path) {
     var polyset = [];
     let finalPolygon = [];
     let polygon = this.props.items.map((item, index) => {
       var s;
       if(item.featureType=="MULTI_POLYGON" || item.featureType=="POLYGON") {
-        if(item.parent.id == path) { //(item.path.match(/\//g) || []).length
-          //console.log(item.name)
+        if(item.parent.id == path) {
             let allPos = [];
-            //parse the coordinates to JSON
+            //Parse the coordinates to JSON
             allPos.push(JSON.parse(item.coordinates))
             //Need to give the coordinates a latlng
             polyset = allPos.map( coords =>{
@@ -76,8 +76,8 @@ class Map extends Component {
     }
   }
 
-  /*
-  */
+  // Finds the right polygon when setting markers.
+  // Sets the polygon with the markers.
   getOnePolygon(currentId) {
     var polyset = [];
     let finalPolygon = [];
@@ -132,8 +132,6 @@ class Map extends Component {
           info['lat'] = parseFloat(sets[1]);
           info ['lng'] = parseFloat(sets[0]);
 
-          //var info = item.name + "\n" + item.openingDate + "\n" + item.coordinates;
-
           const marker = {
             position: {
               lat: parseFloat(sets[1]),
@@ -165,7 +163,6 @@ class Map extends Component {
               options={{streetViewControl: false, mapTypeControl: false}}
               onClick={(e) => this.props.dispatch(clickedMap(e)) }
             >
-            {/*coordinates*/}
             <div className="polyButton">
               <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>Show polygons</button>
               <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>Show search</button>

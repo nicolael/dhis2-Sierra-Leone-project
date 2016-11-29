@@ -33,6 +33,7 @@ class EditOrg extends Component{
     this.loadOrg();
   }
 
+  // Sets values from the text fields when submitting
   handleName(event) {
     this.setState({name: event.target.value});
   }
@@ -44,6 +45,7 @@ class EditOrg extends Component{
     this.setState({lng: event.target.value});
   }
 
+  // Fetches a new organisationUnit based on id
   loadOrg() {
   loadOrganisationUnitToEdit(this.props.markerInfo.id)
     .then((organisationUnits) => {
@@ -55,6 +57,7 @@ class EditOrg extends Component{
 
 
   handleSubmit(event) {
+    // Sets the showEditOrg variable to false (hides the box)
     this.props.dispatch(editInfo(false))
 
     var orgUnitEdit = this.state.orgUnit;
@@ -62,15 +65,11 @@ class EditOrg extends Component{
 
     //Updated orgUnit
 
+    // Popup when submitting the new updates.
     alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+this.props.markerInfo.id+" coords["+this.state.lat+","+this.state.lng+"]");
     event.preventDefault();
 
-
-    //saveOrganisationUnit({"name":"helloo", "shortName":"yoomafaaka","openingDate":"1970-01-01"});
     var editcoordinates = "[ " + this.state.lng + "," + this.state.lat + "]";
-    //ny fetch på organisationUnit med id, bare endre det vi vil
-    //editOrganisationUnit({"name": this.state.name, "shortName": this.state.name, "openingDate": "1970-01-01", "id": this.props.markerInfo.id, "parent":{id: 'YuQRtpLP10I'}});
-    //console.log(editcoordinates);
     editOrganisationUnit(orgUnitEdit);
   }
 
