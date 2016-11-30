@@ -45,6 +45,10 @@ class EditOrg extends Component{
     this.setState({lng: event.target.value});
   }
 
+  handleClose(){
+    this.props.dispatch(editInfo(false))
+  }
+
   // Fetches a new organisationUnit based on id
   loadOrg() {
   loadOrganisationUnitToEdit(this.props.markerInfo.id)
@@ -53,7 +57,8 @@ class EditOrg extends Component{
         orgUnit: organisationUnits
       });
     });
-}
+  }
+
 
 
   handleSubmit(event) {
@@ -62,18 +67,18 @@ class EditOrg extends Component{
 
     var orgUnitEdit = this.state.orgUnit;
     orgUnitEdit.name = this.state.name;
+    orgUnitEdit.shortName = this.state.name;
+
     var coords = '['+this.state.lng+','+this.state.lat+']';
     orgUnitEdit.coordinates = coords;
-    //alert("Coordinates are now : "+orgUnitEdit.coordinates);
 
 
     //Updated orgUnit
 
     // Popup when submitting the new updates.
-    alert('An org was submitted:\n'+"name : "+this.state.name+" id :"+this.props.markerInfo.id+" coords["+this.state.lat+","+this.state.lng+"]");
+    alert('An organisation unit was edited:\n'+"name : "+this.state.name+" id :"+this.props.markerInfo.id+" coords["+this.state.lat+","+this.state.lng+"]");
     event.preventDefault();
 
-    var editcoordinates = "[ " + this.state.lng + "," + this.state.lat + "]";
     editOrganisationUnit(orgUnitEdit);
   }
 
@@ -93,6 +98,11 @@ class EditOrg extends Component{
         Lng:
         <input type="text" lng={this.state.lng} onChange={(e) => this.handleLng(e)} value={this.state.lng} />
         <input type="Submit" value="Edit Info"/>
+
+        <input type="button" value="Close" onClick = { () =>
+          this.props.dispatch(editInfo(false))}
+        />
+
       </form>
     );
   }

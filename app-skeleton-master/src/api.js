@@ -38,7 +38,6 @@ function onlySuccessResponses(response) {
 //https://play.dhis2.org/demo/api/metadata?assumeTrue=false&organisationUnits=true&lastUpdated=2014-08-01
 //https://play.dhis2.org/demo/api/metadata.json?assumeTrue=false&organisationUnits=true&lastUpdated=2014-08-01
 export function loadOrganisationUnits() {
-    console.log(config.baseUrl)
     // Load the organisation units but only the first level and the do not use paging
     return fetch(`${serverUrl}/metadata?assumeTrue=false&organisationUnits=true&level=2&lastUpdated=2014-08-01`, fetchOptions)
         .then(onlySuccessResponses)
