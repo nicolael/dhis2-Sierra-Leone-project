@@ -26,14 +26,15 @@ class Info extends Component {
 
     return(
       <div className="info">
-        <h2>Facility Name : {this.props.markerInfo == null ? null : this.props.markerInfo.name}</h2>
-        <p>Opening date : {this.props.markerInfo == null ? null : this.props.markerInfo.openingDate}</p>
-        <p>ID : {this.props.markerInfo == null ? null : this.props.markerInfo.id}</p>
           <div className="buttons">
               <button onClick = { () =>
                 this.props.dispatch(editInfo(true))
               }>Edit Info</button>
           </div>
+        <h3>Facility Name : {this.props.markerInfo == null ? null : this.props.markerInfo.name}</h3>
+        <p>Opening date : {this.props.markerInfo == null ? null : this.props.markerInfo.openingDate}</p>
+        <p>ID : {this.props.markerInfo == null ? null : this.props.markerInfo.id}</p>
+        <p>Coordinates : {this.props.markerInfo == null ? null : this.props.markerInfo.lat +' , '+this.props.markerInfo.lng}</p>
           {this.props.showEditOrg ?
             <div className="popup">
               <EditOrg/>

@@ -22,7 +22,7 @@
     border: 1px solid black;
     float: right;
     width: 70%;
-    height: 630px;
+    height: 638px;
     box-shadow: 1px 1px 1px #111;
 
 }
@@ -34,11 +34,11 @@
     background-color: rgba(0, 0, 0, 0);
 }
 .info{
-    vertical-align: middle;
     display: block;
-    padding-top: 10px;
+    padding-top: 2px;
+    text-indent: 10px;
     font-family: "Arial Narrow";
-    text-align: center;
+    text-align: left;
     float: right;
     border: 1px solid black;
     width: 70%;
@@ -48,9 +48,9 @@
 }
 .polyButton{
     float: right;
-    margin-top: 15px;
     margin-left: 90px;
     z-index: 1;
+    margin-top: 15px;
     position: absolute;
     transform: translate(-50%, -50%)
 }
