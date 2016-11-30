@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, Polygon } from 'react-google-maps';
 import Info from './Info';
 import { connect } from 'react-redux';
-import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons, clickedMap } from '../actions';
+import { clickedMarker, clickedPolygon, clickedLastPolygon, showFirstLevelPolygons, clickedMap, showSearch } from '../actions';
 
 function mapStateToProps( state ) {
   const { markerInfo } = state.mapReducer;
@@ -16,6 +16,13 @@ function mapStateToProps( state ) {
 
 class Map extends Component {
 
+  //Runs every time the componen updates
+  componentDidUpdate() {
+    if(this.props.searchState != null){
+      this.findMultipleMarkersAndPolygons();
+      this.props.dispatch(showSearch(null));
+    }
+  }
   /*
   Helper method to set the polyState
   */
@@ -82,7 +89,7 @@ class Map extends Component {
     let polygon = this.props.items.map((item, index) => {
       var s;
       if(item.featureType=="MULTI_POLYGON" || item.featureType=="POLYGON") {
-        if(item.id == currentId) { //(item.path.match(/\//g) || []).length
+        if(item.id == currentId) {
             let allPos = [];
             //parse the coordinates to JSON
             allPos.push(JSON.parse(item.coordinates))
@@ -125,7 +132,6 @@ class Map extends Component {
           var info = [];
           info['name'] = item.name;
           info['openingDate'] = item.openingDate;
-          //info['coordinates'] = item.coordinates;
           info['id'] = item.id;
           info['lat'] = parseFloat(sets[1]);
           info ['lng'] = parseFloat(sets[0]);
@@ -146,9 +152,10 @@ class Map extends Component {
      this.props.dispatch(clickedLastPolygon(coordinates))
   }
 
-  findMultipleMarkers(set) {
+  //Finds the markers and polygons that have been searched on
+  findMultipleMarkersAndPolygons() {
     var sets;
-    let coords = set.map(item2 => {
+    let coords = this.props.items.map(item2 => {
       return this.props.items.map((item, index) => {
         if(item.featureType=="POINT"){
           if(item.id == item2.id) {
@@ -181,20 +188,6 @@ class Map extends Component {
      this.props.dispatch(clickedLastPolygon(coords))
   }
 
-  //This finds the markers and polygons that should be showed after a search
-  showMultipleMarkersAndPolygons(markersAndPolygons) {
-    var arr = markersAndPolygons;
-    if(arr.length > 1) {
-      this.findMultipleMarkers(arr)
-    } else {
-      if(arr[0].featureType == "POINT") {
-        this.getMarker(arr[0].parent.id);
-      } else if(arr[0].featureType == "POLYGON" || arr[0].featureType == "MULTI_POLYGON") {
-        this.getOnePolygon(arr[0].id);
-      }
-    }
-  }
-
     render(){
 
       const mapContainer = <div style ={{height: '100%', width:'100%'}}></div>
@@ -211,7 +204,6 @@ class Map extends Component {
             >
             <div className="polyButton">
               <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>Show polygons</button>
-              <button onClick = {() => this.showMultipleMarkersAndPolygons(this.props.searchState)}>Show search</button>
 
             </div>
             {
