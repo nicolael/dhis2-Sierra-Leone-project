@@ -18,8 +18,8 @@ class SaveOrg extends Component {
     	level : 4,
     	featureType: 'POINT',
     	coordinates: '[-11.1447,10.4149]',
-    	openingDate:'2016-01-01',
-      value:'',
+    	//openingDate:'2016-01-01',
+      openingDate : new Date().toISOString().substring(0, 10),
       //Must fill out parent for it to show up
       parent: {
         id: 'DNRAeXT9IwS'
@@ -30,6 +30,8 @@ class SaveOrg extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getCoords = this.getCoords.bind(this);
+    this.handleDate = this.handleDate.bind(this);
+  
   }
 
   handleName(event) {
@@ -39,10 +41,23 @@ class SaveOrg extends Component {
 
 
   handleSubmit(event) {
-    alert('An organisation unit was submitted\n'+"Name : "+this.state.name
-      +"\nParent : "+this.state.parent.id+"\nCoordinates : "+this.state.coordinates);
+
+    var coords = "["+this.props.coordState.latLng.lng()+","+this.props.coordState.latLng.lat()+"]"
+    var orgUnit = this.state;
+    
+    if(coords!=null){
+      orgUnit.coordinates = coords;
+      var date = new Date().toISOString();;
+      var res = date.substring(0, 10);
+      alert(res); 
+      orgUnit.openingDate = res;
+       
+    }
+    
+    alert('An organisation unit was submitted\n'+"Name : "+orgUnit.name
+      +"\nParent : "+this.state.parent.id+"\nCoordinates : "+orgUnit.coordinates);
     event.preventDefault();
-    saveOrganisationUnit(this.state);
+    saveOrganisationUnit(orgUnit);
   }
 
   handleChange(event) {
@@ -62,6 +77,15 @@ class SaveOrg extends Component {
     this.setState({coordinates : coords});
     event.preventDefault();
   }
+  getDato(event){
+      var date = new Date().toISOString();;
+      var res = date.substring(0, 10);
+      this.setState({openingDate:res});
+      event.preventDefault();
+  }
+  handleDate(event){
+    this.setState({name: event.target.value});
+  }
 
   render() {
 
@@ -70,11 +94,13 @@ class SaveOrg extends Component {
         Name:
         <input type="text" name={this.state.name} onChange={this.handleName} />
         Lat:
-        <input type="text" value={this.props.coordState == null ? null : this.props.coordState.latLng.lat()} onChange={this.getLat}/>
+        <input type="text" value={this.props.coordState == null ? null : this.props.coordState.latLng.lat()} />
         Long:
-        <input type="text" value={this.props.coordState == null ? null : this.props.coordState.latLng.lng()} onChange={this.getLong}/>
-        <button onClick = {this.getCoords}>Set coordinates</button>
+        <input type="text" value={this.props.coordState == null ? null : this.props.coordState.latLng.lng()} />
         <br />
+        <br />
+        Opening date :
+        <input type="text" defaultValue={this.state.openingDate} onChange={this.handleDate} />
         <br />
         Select parent :
         <label>
