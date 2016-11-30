@@ -13,7 +13,6 @@ function mapStateToProps( state ) {
   const { searchState } = state.counterReducer;
   return {markerInfo, polyState, markerState, counterState, searchState, coordState};
 }
-var currentPath = "ImspTQPwCqd";
 
 class Map extends Component {
 
@@ -28,19 +27,18 @@ class Map extends Component {
     if(!this.props.counterState) {
       //Set counterState to true
       this.props.dispatch(showFirstLevelPolygons(true))
-      /*This is a bad solution to find the first level*/
       this.nextPolygon(id)
      }
   }
 
   // Sets the state to the next polygon
-  nextPolygon(path) {
+  nextPolygon(id) {
     var polyset = [];
     let finalPolygon = [];
     let polygon = this.props.items.map((item, index) => {
       var s;
       if(item.featureType=="MULTI_POLYGON" || item.featureType=="POLYGON") {
-        if(item.parent.id == path) {
+        if(item.parent.id == id) {
             let allPos = [];
             //Parse the coordinates to JSON
             allPos.push(JSON.parse(item.coordinates))
@@ -68,9 +66,9 @@ class Map extends Component {
     });
     //Code for markers
     if(finalPolygon.length == 0) {
-      this.getMarker(path);
+      this.getMarker(id);
       //Call a method to set the polyState to only the polygon last clicked
-      this.getOnePolygon(path);
+      this.getOnePolygon(id);
     } else {
       this.setPolyState(finalPolygon);
     }
@@ -148,6 +146,54 @@ class Map extends Component {
      this.props.dispatch(clickedLastPolygon(coordinates))
   }
 
+  findMultipleMarkers(set) {
+    var sets;
+    let coords = set.map(item2 => {
+      return this.props.items.map((item, index) => {
+        if(item.featureType=="POINT"){
+          if(item.id == item2.id) {
+
+            sets = item.coordinates.substr(1, item.coordinates.length - 2).split(',');
+
+            var info = [];
+            info['name'] = item.name;
+            info['openingDate'] = item.openingDate;
+            info['id'] = item.id;
+            info['lat'] = parseFloat(sets[1]);
+            info ['lng'] = parseFloat(sets[0]);
+
+            const marker = {
+              position: {
+                lat: parseFloat(sets[1]),
+                lng: parseFloat(sets[0])
+              }
+            }
+          return <Marker key={index}{...marker}
+              onClick={ () =>
+                  this.props.dispatch(clickedMarker(info))
+              }/>
+          }
+        } else if(item.featureType=="MULTI_POLYGON" || item.featureType=="POLYGON") {
+          this.nextPolygon(this.props.mainId);
+        }
+       });
+    })
+     this.props.dispatch(clickedLastPolygon(coords))
+  }
+
+  //This finds the markers and polygons that should be showed after a search
+  showMultipleMarkersAndPolygons(markersAndPolygons) {
+    var arr = markersAndPolygons;
+    if(arr.length > 1) {
+      this.findMultipleMarkers(arr)
+    } else {
+      if(arr[0].featureType == "POINT") {
+        this.getMarker(arr[0].parent.id);
+      } else if(arr[0].featureType == "POLYGON" || arr[0].featureType == "MULTI_POLYGON") {
+        this.getOnePolygon(arr[0].id);
+      }
+    }
+  }
 
     render(){
 
@@ -165,7 +211,7 @@ class Map extends Component {
             >
             <div className="polyButton">
               <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>Show polygons</button>
-              <button onClick = {() => this.setFirstPolygon(this.props.searchState)}>Show search</button>
+              <button onClick = {() => this.showMultipleMarkersAndPolygons(this.props.searchState)}>Show search</button>
 
             </div>
             {

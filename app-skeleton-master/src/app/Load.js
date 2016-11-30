@@ -66,11 +66,13 @@ class Load extends Component {
         }
       }
       if(test[0] != null) {
-        this.props.dispatch(showSearch(test[0].parent.id))
+        this.props.dispatch(showSearch(test));
+        this.setState({base: test });
       } else if(test.length == 0) {
         this.emptyMap();
+        this.resetMap();
       }
-      this.setState({base: test });
+
     }
 
     emptyMap(){
@@ -78,6 +80,7 @@ class Load extends Component {
        this.props.dispatch(clickedPolygon([]));
        this.props.dispatch(clickedLastPolygon([]));
        this.props.dispatch(showFirstLevelPolygons(false));
+       this.props.dispatch(clickedMarker(null));
     }
 
     resetMap(){
