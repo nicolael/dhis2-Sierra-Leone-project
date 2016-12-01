@@ -16,16 +16,15 @@ function mapStateToProps( state ) {
 
 class Map extends Component {
 
-  //Runs every time the componen updates
+  //Runs every time the component updates
   componentDidUpdate() {
     if(this.props.searchState != null){
       this.findMultipleMarkersAndPolygons();
       this.props.dispatch(showSearch(null));
     }
   }
-  /*
-  Helper method to set the polyState
-  */
+
+  //Helper method to set the polyState
   setPolyState(polygon) {
     this.props.dispatch(clickedPolygon(polygon))
   }
