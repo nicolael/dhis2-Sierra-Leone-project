@@ -16,7 +16,7 @@ import {
 } from './actions';
 
 /*
-Changes the state after a marker is clicked
+  The functions that is related to the map component
 */
 function mapReducer(state = {}, action) {
   switch(action.type) {

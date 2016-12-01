@@ -3,23 +3,19 @@ import { connect} from 'react-redux';
 import ReactDom from 'react-dom';
 import EditOrg from './EditOrg'
 import {editInfo} from '../actions';
-//import Popup from 'react-popup';
 
-/*
-Gets the state and makes it a prop
-*/
+
+//Gets the state and makes it a prop
 function mapStateToProps( state ) {
-  //const { dispatch } = state;
   const { markerInfo } = state.mapReducer;
   const { showEditOrg } = state.counterReducer;
-  return {markerInfo, showEditOrg}; //{markerInfo, dispatch}
+  return {markerInfo, showEditOrg};
 }
 
 class Info extends Component {
 
     constructor(props) {
         super(props);
-        // Set some initial state variables that are used within the component
     }
 
   render() {
@@ -38,7 +34,7 @@ class Info extends Component {
         <p>Opening date : {this.props.markerInfo == null ? null : this.props.markerInfo.openingDate.substring(0, 10)}</p>
         <p>ID : {this.props.markerInfo == null ? null : this.props.markerInfo.id}</p>
         <p>Coordinates : {this.props.markerInfo == null ? null : this.props.markerInfo.lat +' , '+this.props.markerInfo.lng}</p>
-        
+
         {this.props.showEditOrg ?
             <div className="popup">
               <EditOrg/>

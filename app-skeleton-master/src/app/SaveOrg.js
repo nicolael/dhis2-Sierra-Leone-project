@@ -18,7 +18,6 @@ class SaveOrg extends Component {
     	level : 4,
     	featureType: 'POINT',
     	coordinates: '[-11.1447,10.4149]',
-    	//openingDate:'2016-01-01',
       openingDate : new Date().toISOString().substring(0, 10),
       //Must fill out parent for it to show up
       parent: {
@@ -31,7 +30,7 @@ class SaveOrg extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.getCoords = this.getCoords.bind(this);
     this.handleDate = this.handleDate.bind(this);
-  
+
   }
 
   handleName(event) {
@@ -44,16 +43,16 @@ class SaveOrg extends Component {
 
     var coords = "["+this.props.coordState.latLng.lng()+","+this.props.coordState.latLng.lat()+"]"
     var orgUnit = this.state;
-    
+
     if(coords!=null){
       orgUnit.coordinates = coords;
       var date = new Date().toISOString();;
       var res = date.substring(0, 10);
-      alert(res); 
+      alert(res);
       orgUnit.openingDate = res;
-       
+
     }
-    
+
     alert('An organisation unit was submitted\n'+"Name : "+orgUnit.name
       +"\nParent : "+this.state.parent.id+"\nCoordinates : "+orgUnit.coordinates);
     event.preventDefault();

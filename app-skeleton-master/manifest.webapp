@@ -7,14 +7,14 @@
     }
   },
   "appType": "APP",
-  "name": "app-skeleton",
+  "name": "Webapp-for-health-facility",
   "version": "1.0.0",
-  "description": "Skeleton app for a DHIS2 web app",
+  "description": "Health facility web app forDHIS2",
   "developer": {
     "name": "Mark Polak"
   },
   "icons": {
     "48": "icon.png"
   },
-  "manifest_generated_at": "Wed Nov 09 2016 10:15:24 GMT+0100 (CET)"
+  "manifest_generated_at": "Thu Dec 01 2016 10:19:00 GMT+0100 (CET)"
 }

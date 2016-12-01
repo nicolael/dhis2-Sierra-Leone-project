@@ -116,10 +116,8 @@ class Map extends Component {
     this.setPolyState(finalPolygon);
   }
 
-  /*
-  Sets a state for markers at the last level
-  finds all the markers for that has the parent sent in as a parameter
-  */
+  //Sets a state for markers at the last level
+  //finds all the markers for that has the parent sent in as a parameter
   getMarker(parent) {
     var sets;
     let coordinates = this.props.items.map((item, index) => {
@@ -203,7 +201,6 @@ class Map extends Component {
             >
             <div className="polyButton">
               <button onClick = {() => this.setFirstPolygon(this.props.mainId)}>Show polygons</button>
-
             </div>
             {
               this.props.polyState == null ? null : this.props.polyState.map( content => {

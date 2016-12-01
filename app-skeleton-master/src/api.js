@@ -67,5 +67,4 @@ export function loadOrganisationUnitToEdit(orgUnitId) {
   return fetch(`${serverUrl2}/organisationUnits/${orgUnitId}`, fetchOptions)
       .then(onlySuccessResponses)
       .then(response => response.json())
-      // pick the organisationUnits property from the payload
 }

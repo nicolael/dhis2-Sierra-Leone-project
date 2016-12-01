@@ -37,9 +37,7 @@ export function clickedLastPolygon(markerState) {
   }
 }
 
-/*
 
-*/
 export function showFirstLevelPolygons(counterState) {
   return {
     type: COUNTER,
@@ -47,7 +45,7 @@ export function showFirstLevelPolygons(counterState) {
   }
 }
 
-/**/
+
 export function showSearch(searchState) {
   return {
     type: SEARCHSHOW,
@@ -55,7 +53,7 @@ export function showSearch(searchState) {
   }
 }
 
-/**/
+
 export function clickedMap(coordState) {
   return {
     type: MAP_CLICKED,
@@ -63,6 +61,9 @@ export function clickedMap(coordState) {
   }
 }
 
+/*
+  Change the state(show/not show) of the popup box in editorg
+*/
 export function editInfo(showEditOrg){
   return{
     type: EDITORG,

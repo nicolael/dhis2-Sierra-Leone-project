@@ -4,10 +4,9 @@ import { connect} from 'react-redux';
 import { editInfo } from '../actions';
 
 function mapStateToProps( state ) {
-  //const { dispatch } = state;
   const { showEditOrg } = state.counterReducer;
   const { markerInfo } = state.mapReducer;
-  return {markerInfo, showEditOrg}; //{markerInfo, dispatch}
+  return {markerInfo, showEditOrg};
 }
 
 class EditOrg extends Component{
@@ -71,9 +70,6 @@ class EditOrg extends Component{
 
     var coords = '['+this.state.lng+','+this.state.lat+']';
     orgUnitEdit.coordinates = coords;
-
-
-    //Updated orgUnit
 
     // Popup when submitting the new updates.
     alert('An organisation unit was edited:\n'+"name : "+this.state.name+" id :"+this.props.markerInfo.id+" coords["+this.state.lat+","+this.state.lng+"]");

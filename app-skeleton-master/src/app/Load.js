@@ -103,7 +103,6 @@ class Load extends Component {
       let startLevel = this.state.items.map(item => {
         if((item.path.match(/\//g) || []).length == 1) {
           startLevelId.push(item.id)
-          //console.log(item.id)
         }
       })
         const center = {
