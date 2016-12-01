@@ -26,11 +26,14 @@ class Info extends Component {
 
     return(
       <div className="info">
+
+
         <div className="buttons">
-            <button onClick = { () =>
+            <button disabled={!this.props.markerInfo} onClick = { () =>
               this.props.dispatch(editInfo(true))
             }>Edit Info</button>
         </div>
+
         <h3>Facility Name : {this.props.markerInfo == null ? null : this.props.markerInfo.name}</h3>
         <p>Opening date : {this.props.markerInfo == null ? null : this.props.markerInfo.openingDate.substring(0, 10)}</p>
         <p>ID : {this.props.markerInfo == null ? null : this.props.markerInfo.id}</p>
