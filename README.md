@@ -4,6 +4,7 @@ Group project in open source development
 #
 ![ScreenShot](/Screenshots/15050129_10154177905822810_1460633559_n.gif)
 #
+![ScreenShot](/Screenshots/15224756_10154216195497810_272185479_o.png.jpeg)
 ![alt tag](https://github.com/nicolael/dhis2-Sierra-Leone-project/blob/master/Screenshots/15224756_10154216195497810_272185479_o.png.jpeg)
 #
 ![alt tag](https://github.com/nicolael/dhis2-Sierra-Leone-project/blob/master/Screenshots/15311529_10154216073147810_1675070592_o.png.jpeg)
